@@ -1,0 +1,8 @@
+<div class="post-single">
+  <h1 ng-bind-html="$ctrl.post.title.rendered" class="post-single-title"></h1>
+
+  <img ng-src="{{$ctrl.post.better_featured_image.media_details.sizes.large.source_url}}" class="post-single-hero" ng-attr-alt="{{$ctrl.post.better_featured_image.alt_text}}">
+
+  <div ng-bind-html="$ctrl.post.content.rendered" class="post-single-content"></div>
+</div>
+<pre>{{$ctrl.post | json}}</pre>

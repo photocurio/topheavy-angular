@@ -1,0 +1,31 @@
+{
+  "globals": {
+    "afterAll": false,
+    "angular": true,
+    "beforeAll": false,
+    "beforeEach": false,
+    "browser": true,
+    "describe": false,
+    "expect": false,
+    "inject": false,
+    "it": false,
+    "jasmine": true,
+    "spyOn": false,
+    "exports": false
+  },
+  "rules": {
+    "no-extra-parens": [2, "all"],
+    "no-shadow": 2,
+    "semi": [2, "always"],
+    "indent": 0,
+    "space-before-function-paren": 0,
+    "padded-blocks": 0,
+    "spaced-comment": 0,
+    "one-var": 0,
+    "no-tabs": 0,
+    "key-spacing": 0,
+    "no-multi-spaces" : 0,
+    "no-trailing-spaces": 0,
+    "no-multiple-empty-lines": 0
+  }
+}
