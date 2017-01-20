@@ -11,16 +11,22 @@
 
 <body ng-app="app">
   <div class="main-container">
+    <header class="header">
+      <h2 class="header-title">
+        <a ui-sref="app">Angular Front End for WordPress</a>
+      </h2>
+      <nav class="header-nav">
+        <a ui-sref="category({slug: 'wordpress'})" href>WORDPRESS</a>
+        <a ui-sref="category({slug: 'books'})" href>BOOKS</a>
+      </nav>
+    </header>
 
-    <fountain-header></fountain-header>
-
-    <main class="main">
-
-      <ui-view></ui-view>
+    <main class="main" ui-view>
 
     </main>
-
-    <fountain-footer></fountain-footer>
+    <footer class="footer">
+      Front end by Peter Mumford <em>sunraydust@gmail.com</em>.
+    </footer>
 
   </div>
 </body>

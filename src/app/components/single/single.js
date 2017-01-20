@@ -6,17 +6,28 @@ module.exports = {
 };
 
 /** @ngInject */
-function singleController(wpApiFactory, $stateParams) {
-
+function singleController($stateParams, $scope, $element) {
+  $element.addClass('single-post');
   var SELF = this;
-
   var slug = $stateParams.slug;
+  var wp = new WPAPI({
+    endpoint: 'http://topheavypilesofbooks.com/wp-json'
+  });
 
-  SELF.$onInit = function () {
+  var success = function(response){
 
-    wpApiFactory.getPost(slug).then(function (response) {
-      SELF.post = response[0];
-    });
-
+    // process and apply the data
+    // the response will be an array
+    // with one post object
+    SELF.post = response[0];
+    $scope.$apply();
   };
+
+  var fail = function(error) {
+
+    // log errors
+    $log.error(error);
+  };
+
+  wp.posts().param('slug', slug).then(success, fail);
 }

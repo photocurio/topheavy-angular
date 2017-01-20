@@ -1,14 +1,22 @@
 module.exports = routesConfig;
 
 /** @ngInject */
-function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
+function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
+  $locationProvider
+    .html5Mode(true)
+    .hashPrefix('!');
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider
+    .otherwise('/');
 
-  $stateProvider.state('app', {
+  $stateProvider
+    .state('app', {
       url: '/',
-      component: 'app'
+      component: 'postsInCategory'
+    })
+    .state('category', {
+      url: '/:slug',
+      component: 'postsInCategory'
     })
     .state('single', {
       url: '/:year/:month/:slug',
