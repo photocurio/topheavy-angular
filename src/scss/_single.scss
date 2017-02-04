@@ -1,0 +1,14 @@
+.post-single {
+  max-width: 1100px;
+  margin: 0 auto 1em;
+  padding: 1em;
+  @include clearfix;
+  &-hero, .aligncenter {
+    display: block;
+    margin: 0 auto 1em;
+  }
+  .alignleft {
+    float: left;
+    margin-right: 1em;
+  }
+}

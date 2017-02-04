@@ -1,34 +1,37 @@
 <!doctype html>
 <html>
 
-<head>
-  <base href="/">
-  <meta charset="utf-8">
-  <title>Angular Client for a WordPress Rest Api</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-</head>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Angular Client for a WordPress Rest Api</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+  </head>
 
-<body ng-app="app">
-  <div class="main-container">
-    <header class="header">
-      <h2 class="header-title">
-        <a ui-sref="app">Angular Front End for WordPress</a>
-      </h2>
-      <nav class="header-nav">
-        <a ui-sref="category({slug: 'wordpress'})" href>WORDPRESS</a>
-        <a ui-sref="category({slug: 'books'})" href>BOOKS</a>
-      </nav>
-    </header>
+  <body ng-app="app">
+    <div class="wrapper" layout="column" style="background-color:pink">
 
-    <main class="main" ui-view>
+      <header flex="nogrow" class="md-padding">
+        <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Angular Front End for WordPress</a></h1>
+        <md-nav-bar md-selected-nav-item="currentNavItem"
+          nav-bar-aria-label="navigation links" ng-init="currentNavItem = 'home'">
+          <md-nav-item md-nav-sref="app" name="home">Home</md-nav-item>
+          <md-nav-item md-nav-sref="category({slug: 'wordpress'})" name="webdev">Web Development</md-nav-item>
+          <md-nav-item md-nav-sref="category({slug: 'books'})" name="books">Books</md-nav-item>
+        </md-nav-bar>
+      </header>
 
-    </main>
-    <footer class="footer">
-      Front end by Peter Mumford <em>sunraydust@gmail.com</em>.
-    </footer>
+      <main ui-view flex layout-padding>
+      </main>
 
-  </div>
-</body>
+      <footer flex="nogrow" class="md-padding">
+        Front end by Peter Mumford <em>sunraydust@gmail.com</em>.
+      </footer>
+
+    </div>
+  </body>
 
 </html>

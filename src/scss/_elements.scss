@@ -1,0 +1,39 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1em;
+  color: #222;
+}
+h1, h2, h3, h4 {
+  font-weight: lighter;
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: crimson;
+  text-decoration: none;
+
+  &:hover {
+    color: red;
+  }
+}
+pre, code {
+  background-color: antiquewhite;
+  font-size: 1.2em;
+  border-radius: 3px;
+}
+code {
+  padding: 0 3px 1px;
+}
+pre {
+  white-space: pre-wrap;
+  padding: 1em;
+}
