@@ -1,17 +1,70 @@
 @import '../../node_modules/angular-material/angular-material.scss';
 body {
   font-weight: 400;
+  display: flex;
 }
 h1 {
   text-align: center;
 }
 h1, h2 {
   font-weight: 300;
-  margin: 0 0 .5em;
   a {
     text-decoration: none;
   }
 }
-nav {
-  background-color: white;
+.site {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  &-header {
+    flex-shrink: 0;
+  }
+  &-footer {
+    flex-shrink: 0;
+    margin-bottom: 24px;
+  }
+  &-content {
+    flex: 1 0 auto;
+    margin: 24px 0;
+  }
+}
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &-callout {
+    flex: 0 1 32%;
+    margin-bottom: 24px;
+    background-color: white;
+    border-radius: 5px;
+    &-thumbnail {
+      max-width: 100%;
+      height: auto;
+    }
+    &-content {
+      padding: 0 12px;
+    }
+  }
+}
+.wrapper{
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media only screen and (min-width: 660px) and (max-width: 1000px) {
+  .posts {
+    &-callout {
+      flex-basis: 48%;
+    }
+  }
+}
+@media only screen and (max-width: 660px) {
+  .posts {
+    &-callout {
+      flex-basis: 100%;
+    }
+  }
 }

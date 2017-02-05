@@ -12,9 +12,9 @@
   </head>
 
   <body ng-app="app">
-    <div class="wrapper" layout="column" style="background-color:pink">
+    <div class="site wrapper">
 
-      <header flex="nogrow" class="md-padding">
+      <header class="site-header">
         <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Angular Front End for WordPress</a></h1>
         <md-nav-bar md-selected-nav-item="currentNavItem"
           nav-bar-aria-label="navigation links" ng-init="currentNavItem = 'home'">
@@ -24,10 +24,10 @@
         </md-nav-bar>
       </header>
 
-      <main ui-view flex layout-padding>
+      <main ui-view class="site-content">
       </main>
 
-      <footer flex="nogrow" class="md-padding">
+      <footer class="site-footer">
         Front end by Peter Mumford <em>sunraydust@gmail.com</em>.
       </footer>
 

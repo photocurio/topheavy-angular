@@ -1,17 +1,18 @@
 
-<div layout="row" layout-xs="column" layout-wrap layout-margin layout-align="center">
-  <md-content ng-repeat="post in $ctrl.posts" flex="30" flex-xs="100" flex-md="45" flex-sm="100">
+<div class="posts">
+  <md-content ng-repeat="post in $ctrl.posts" class="posts-callout">
     <img ng-if="post.better_featured_image"
       ng-src="{{post.better_featured_image.media_details.sizes.medium.source_url ||
       post.better_featured_image.media_details.sizes.thumbnail.source_url}}"
-      ng-attr-alt="{{post.better_featured_image.alt_text}}">
-    <div layout-padding>
-      <h2 class="posts-in-category-callout-title">
+      ng-attr-alt="{{post.better_featured_image.alt_text}}"
+      class="posts-callout-thumbnail">
+    <div class="posts-callout-content">
+      <h2 class="posts-callout-title">
         <a ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
           <span ng-bind-html="post.title.rendered"></span>
         </a>
       </h2>
-      <small class="posts-in-category-callout-date">published {{post.date | date: 'MMM d, yyyy'}}</small>
+      <small class="posts-callout-meta">published {{post.date | date: 'MMM d, yyyy'}}</small>
       <div ng-bind-html="post.excerpt.rendered" class="post-callout-excerpt"></div>
     </div>
   </md-content>
