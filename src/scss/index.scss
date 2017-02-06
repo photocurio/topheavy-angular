@@ -1,21 +1,44 @@
 @import '../../node_modules/angular-material/angular-material.scss';
+
+$linkColor: crimson;
 body {
   font-weight: 400;
   display: flex;
+  // background-color: #ccc;
 }
+a {
+  color: $linkColor;
+  &.md-button {
+    color: #666;
+    &.md-active {
+      color: $linkColor;
+    }
+  }
+}
+
 h1 {
   text-align: center;
+  font-weight: 300;
+  font-size: 44px;
+  margin: .15em 0;
+  a {
+    text-decoration: none;
+  }
 }
-h1, h2 {
+
+h2 {
   font-weight: 300;
   a {
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 .site {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex: 1 1 auto;
   &-header {
     flex-shrink: 0;
   }
@@ -27,8 +50,32 @@ h1, h2 {
     flex: 1 0 auto;
     margin: 24px 0;
   }
+  &.wrapper{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+.md-nav{
+  &-bar {
+    border-color: #ddd;
+  }
+  &-item {
+    background-color: white;
+    margin-right: 8px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+md-nav-ink-bar {
+  background-color: $linkColor;
+  bottom: 1px;
 }
 
+.md-button._md-nav-button {
+  margin: 0;
+}
 .posts {
   display: flex;
   flex-direction: row;
@@ -48,12 +95,22 @@ h1, h2 {
     }
   }
 }
-.wrapper{
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 20px;
+.post-single {
+  max-width: 900px;
 }
-
+.wp-caption {
+  &-text {
+    font-style: italic;
+  }
+}
+.aligncenter {
+  align-self: center;
+  text-align: center;
+}
+.alignleft {
+  float: left;
+  margin: 0 20px 0 0;
+}
 @media only screen and (min-width: 660px) and (max-width: 1000px) {
   .posts {
     &-callout {

@@ -2,7 +2,7 @@ var WPAPI = require('wpapi');
 
 module.exports = {
   controller: categoryController,
-  template: require('./category.html')
+  template: require('./collection.html')
 };
 
 /** @ngInject */
@@ -46,8 +46,8 @@ function categoryController($stateParams, $scope, $filter, $log) {
 
       // then use the ID to get the posts
       return wp.posts().categories(cats[0].id);
-    })
-    .then(success, fail);
+    }).then(success, fail);
+
   } else {
 
     // if there is no category slug, get the default posts

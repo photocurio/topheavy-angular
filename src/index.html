@@ -15,17 +15,17 @@
     <div class="site wrapper">
 
       <header class="site-header">
-        <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Angular Front End for WordPress</a></h1>
+        <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
         <md-nav-bar md-selected-nav-item="currentNavItem"
-          nav-bar-aria-label="navigation links" ng-init="currentNavItem = 'home'">
+          nav-bar-aria-label="navigation links"
+          ng-init="currentNavItem='home'">
           <md-nav-item md-nav-sref="app" name="home">Home</md-nav-item>
-          <md-nav-item md-nav-sref="category({slug: 'wordpress'})" name="webdev">Web Development</md-nav-item>
-          <md-nav-item md-nav-sref="category({slug: 'books'})" name="books">Books</md-nav-item>
+          <md-nav-item md-nav-sref="category({slug:'wordpress'})" name="webdev">Web Development</md-nav-item>
+          <md-nav-item md-nav-sref="category({slug:'books'})" name="books">Books</md-nav-item>
         </md-nav-bar>
       </header>
 
-      <main ui-view class="site-content">
-      </main>
+      <main ui-view class="site-content"></main>
 
       <footer class="site-footer">
         Front end by Peter Mumford <em>sunraydust@gmail.com</em>.

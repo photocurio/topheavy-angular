@@ -1,4 +1,14 @@
 <div class="post-single">
+  <!-- <img ng-if="$ctrl.post.better_featured_image"
+    ng-src="{{$ctrl.post.better_featured_image.source_url}}"
+    ng-attr-alt="{{$ctrl.post.better_featured_image.alt_text}}"
+    class="posts-callout-thumbnail"> -->
   <h1 ng-bind-html="$ctrl.post.title.rendered" class="post-single-title"></h1>
-  <div ng-bind-html="$ctrl.post.content.rendered" class="post-single-content"></div>
+  <div ng-bind-html="$ctrl.post.content.rendered" class="post-single-content">
+  </div>
+  <p class="meta">posted in: <span ng-repeat="cat in $ctrl.categories">
+    <a ui-sref="category({slug:cat.slug})" href>{{cat.name}}</a></span>.
+    tagged: <span ng-repeat="tagLink in $ctrl.tags">
+    <a ui-sref="tag({slug:tagLink.slug})" href>{{tagLink.name}}</a></span>.
+  </p>
 </div>
