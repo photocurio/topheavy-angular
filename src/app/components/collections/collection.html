@@ -1,11 +1,13 @@
 
 <div class="posts">
   <md-content ng-repeat="post in $ctrl.posts" class="posts-callout">
+    <a ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
     <img ng-if="post.better_featured_image"
       ng-src="{{post.better_featured_image.media_details.sizes.medium.source_url ||
       post.better_featured_image.media_details.sizes.thumbnail.source_url}}"
       ng-attr-alt="{{post.better_featured_image.alt_text}}"
       class="posts-callout-thumbnail">
+    </a>
     <div class="posts-callout-content">
       <h2 class="posts-callout-title">
         <a ui-sref="single({slug: post.slug, year: post.year, month: post.month})"

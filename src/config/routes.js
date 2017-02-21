@@ -9,15 +9,11 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
 
   $stateProvider.state('app', {
     url: '/',
-    component: 'postsInCategory'
+    component: 'postsInCollection'
   })
-  .state('category', {
-    url: '/category/:slug',
-    component: 'postsInCategory'
-  })
-  .state('tag', {
-    url: '/tag/:slug',
-    component: 'postsInTag'
+  .state('collection', {
+    url: '/:taxonomy/:slug',
+    component: 'postsInCollection'
   })
   .state('single', {
     url: '/:year/:month/:slug',

@@ -27,11 +27,9 @@ function singleController($stateParams, $scope, $element, $log) {
     // the response will be an array
     // with one post object
     SELF.post = response[0];
-    $log.log(response[0]);
 
     // fetch the categories
     wp.categories().param('post', response[0].id).then(function(catResponse) {
-      $log.log(catResponse[0]);
       SELF.categories = catResponse;
     }, fail);
 

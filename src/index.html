@@ -20,8 +20,8 @@
           nav-bar-aria-label="navigation links"
           ng-init="currentNavItem='home'">
           <md-nav-item md-nav-sref="app" name="home">Home</md-nav-item>
-          <md-nav-item md-nav-sref="category({slug:'wordpress'})" name="webdev">Web Development</md-nav-item>
-          <md-nav-item md-nav-sref="category({slug:'books'})" name="books">Books</md-nav-item>
+          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'wordpress'})" name="webdev">Wordpress</md-nav-item>
+          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'books'})" name="books">Books</md-nav-item>
         </md-nav-bar>
       </header>
 
