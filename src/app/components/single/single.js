@@ -35,7 +35,6 @@ function singleController($stateParams, $scope, $element, $log) {
 
     // fetch the tags
     wp.tags().param('post', response[0].id).then(function(tagResponse) {
-      $log.log(tagResponse);
       SELF.tags = tagResponse;
       $scope.$apply();
     }, fail);

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="robots" content="noindex, follow">
     <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
   </head>
 
   <body ng-app="app">
@@ -16,16 +17,16 @@
 
       <header class="site-header">
         <div class="site-header-banner">
-          <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
+          <h1><a ui-sref="app({page:1})" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
           <p class="vcard">Peter Mumford<br>
-          @photocurio<br>
-        <a href="mailto:sunraydust@gmail.com">sunraydust@gmail.com</a></p>
+          <a href="https://twitter.com/photocurio">@photocurio</a><br>
+          <a href="mailto:sunraydust@gmail.com">sunraydust@gmail.com</a></p>
         </div>
         <md-nav-bar md-selected-nav-item="currentNavItem"
           nav-bar-aria-label="navigation links"
           ng-init="currentNavItem='home'">
           <md-nav-item md-nav-sref="app({page:1})" name="home">Home</md-nav-item>
-          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'wordpress', page:1})" name="webdev">Wordpress</md-nav-item>
+          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'web-development', page:1})" name="webdev">Web Development</md-nav-item>
           <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'books', page:1})" name="books">Books</md-nav-item>
         </md-nav-bar>
       </header>

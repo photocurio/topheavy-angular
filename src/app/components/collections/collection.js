@@ -8,12 +8,12 @@ module.exports = {
 /** @ngInject */
 function collectionController($stateParams, $scope, $filter, $log, $state) {
   var SELF = this;
-  SELF.page = parseInt($stateParams.page) || 1;
   var wp = new WPAPI({
     endpoint: 'http://topheavypilesofbooks.com/wp-json'
   });
 
   // Pagination functions
+  SELF.page = parseInt($stateParams.page) || 1;
   SELF.nextPage = function() {
     $state.go('.', {page: SELF.page + 1}, {notify: false});
   };
