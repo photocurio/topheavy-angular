@@ -1,14 +1,15 @@
 <div class="post-single">
   <h1 ng-bind-html="$ctrl.post.title.rendered" class="post-single-title"></h1>
   <div ng-bind-html="$ctrl.post.content.rendered" class="post-single-content">
-  </div>
-  <p class="meta">posted in:
-    <span ng-repeat="cat in $ctrl.categories">
-      <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a>
-    </span>.
-  tagged:
-    <span ng-repeat="tagLink in $ctrl.tags">
-      <a ui-sref="collection({taxonomy:'tag', slug:tagLink.slug})" href>{{tagLink.name}}</a>
-    </span>.
+</div>
+
+<div class="meta">
+  <p>Posted in:
+  <span ng-repeat="cat in $ctrl.categories">
+    <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
+  </p>
+  <p>Tagged:
+  <span ng-repeat="tagLink in $ctrl.tags">
+    <a ui-sref="collection({taxonomy:'tag', slug:tagLink.slug})" href>{{tagLink.name}}</a></span>
   </p>
 </div>

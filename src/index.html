@@ -16,12 +16,16 @@
     <div class="site wrapper">
 
       <header class="site-header">
-        <div class="site-header-banner">
-          <h1><a ui-sref="app({page:1})" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
+        <div class="site-header-banner clearfix">
+          <div class="site-header-banner-headers">
+            <h1><a ui-sref="app({page:1})" ng-click="currentNavItem = 'home'">Cherrytree</a></h1>
+            <h3>An Angular Powered Headless Theme for WordPress</h3>
+          </div>
           <p class="vcard">Peter Mumford<br>
           <a href="https://twitter.com/photocurio">@photocurio</a><br>
           <a href="mailto:sunraydust@gmail.com">sunraydust@gmail.com</a></p>
         </div>
+
         <md-nav-bar md-selected-nav-item="currentNavItem"
           nav-bar-aria-label="navigation links"
           ng-init="currentNavItem='home'">

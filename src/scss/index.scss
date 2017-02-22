@@ -1,11 +1,17 @@
 @import '../../node_modules/angular-material/angular-material.scss';
-
+.clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
 html {
   font-family: Georgia, serif;
   font-size: 1.1em;
 }
 $linkColor: firebrick;
-$highlightColor: crimson;
+$highlightColor: red;
 body {
   font-weight: 400;
   display: flex;
@@ -36,6 +42,7 @@ h1 {
 h2 {
   font-family: 'Trocchi', serif;
   font-weight: normal;
+  margin: .45em 0;
   a {
     text-decoration: none;
   }
@@ -56,13 +63,16 @@ pre {
   &-header {
     flex-shrink: 0;
     &-banner {
-      &::after {
-        content: '';
-        display: table;
-        clear: both;
-      }
-      h1 {
+      &-headers {
         float: left;
+        h1 {
+          margin-bottom: 0;
+        }
+        h3 {
+          font-weight: normal;
+          font-style: italic;
+          margin-top: 0;
+        }
       }
       .vcard {
         text-align: right;
@@ -121,10 +131,31 @@ md-nav-ink-bar {
     margin-bottom: 24px;
     background-color: white;
     border-bottom: 1px solid #ddd;
+    &-meta {
+      font-weight: bold;
+    }
     &-thumbnail {
       border-radius: 5px;
       max-width: 100%;
       height: auto;
+    }
+  }
+}
+.meta {
+  padding: .5em 0;
+  font-size: 90%;
+  border-top: 3px double #888;
+  border-bottom: 3px double #888;
+  span {
+    font-weight: bold;
+    &::after {
+      content: ','
+    }
+    &:last-of-type:after {
+      content: '.';
+    }
+    a {
+      text-decoration: none;
     }
   }
 }
