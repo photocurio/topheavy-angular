@@ -15,13 +15,18 @@
     <div class="site wrapper">
 
       <header class="site-header">
-        <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
+        <div class="site-header-banner">
+          <h1><a ui-sref="app" ng-click="currentNavItem = 'home'">Topheavy Piles of Books</a></h1>
+          <p class="vcard">Peter Mumford<br>
+          @photocurio<br>
+        <a href="mailto:sunraydust@gmail.com">sunraydust@gmail.com</a></p>
+        </div>
         <md-nav-bar md-selected-nav-item="currentNavItem"
           nav-bar-aria-label="navigation links"
           ng-init="currentNavItem='home'">
-          <md-nav-item md-nav-sref="app" name="home">Home</md-nav-item>
-          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'wordpress'})" name="webdev">Wordpress</md-nav-item>
-          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'books'})" name="books">Books</md-nav-item>
+          <md-nav-item md-nav-sref="app({page:1})" name="home">Home</md-nav-item>
+          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'wordpress', page:1})" name="webdev">Wordpress</md-nav-item>
+          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'books', page:1})" name="books">Books</md-nav-item>
         </md-nav-bar>
       </header>
 

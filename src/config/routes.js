@@ -8,11 +8,23 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider.state('app', {
-    url: '/',
+    url: '/?page',
+    params: {
+      page: {
+        value: '1',
+        squash: true
+      }
+    },
     component: 'postsInCollection'
   })
   .state('collection', {
-    url: '/:taxonomy/:slug',
+    url: '/:taxonomy/:slug?page',
+    params: {
+      page: {
+        value: '1',
+        squash: true
+      }
+    },
     component: 'postsInCollection'
   })
   .state('single', {
