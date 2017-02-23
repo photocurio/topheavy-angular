@@ -12,8 +12,6 @@ function singleController($stateParams, $scope, $element, $log) {
 
   var SELF = this;
 
-  var slug = $stateParams.slug;
-
   var wp = new WPAPI({
     endpoint: 'http://topheavypilesofbooks.com/wp-json'
   });
@@ -23,24 +21,14 @@ function singleController($stateParams, $scope, $element, $log) {
   };
 
   var success = function(response){
-    // process and apply the data
-    // the response will be an array
-    // with one post object
+    // the response will be an array with one post object
     SELF.post = response[0];
+    SELF.post.categories = SELF.post._embedded['wp:term'][0];
+    SELF.post.tags = SELF.post._embedded['wp:term'][1];
 
-    // fetch the categories
-    wp.categories().param('post', response[0].id).then(function(catResponse) {
-      SELF.categories = catResponse;
-    }, fail);
-
-    // fetch the tags
-    wp.tags().param('post', response[0].id).then(function(tagResponse) {
-      SELF.tags = tagResponse;
-      $scope.$apply();
-    }, fail);
-
-    // $scope.$apply();
+    // apply the data to the scope
+    $scope.$apply();
   };
 
-  wp.posts().param('slug', slug).then(success, fail);
+  wp.posts().param('slug', $stateParams.slug).embed().then(success, fail);
 }

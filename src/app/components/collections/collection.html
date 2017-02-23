@@ -1,10 +1,10 @@
-<div class="posts">
+<div class="posts ng-cloak">
   <md-content ng-repeat="post in $ctrl.posts"
     class="posts-callout" ng-class="'post-format-' + post.format">
-    <a ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
-    <img ng-if="post.better_featured_image"
-      ng-src="{{post.better_featured_image.media_details.sizes.medium.source_url ||
-      post.better_featured_image.media_details.sizes.thumbnail.source_url}}"
+    <a ng-if="post.featuredimage"
+      ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
+    <img ng-src="{{post.featuredimage[0].media_details.sizes.medium.source_url ||
+      post.featuredimage[0].media_details.sizes.thumbnail.source_url}}"
       ng-attr-alt="{{post.better_featured_image.alt_text}}"
       class="posts-callout-thumbnail">
     </a>
@@ -14,7 +14,6 @@
           ng-bind-html="post.title.rendered"></a>
         <span ng-show="post.format === 'link'" ng-bind-html="post.title.rendered"></span>
       </h2>
-      <small class="posts-callout-meta">published {{post.date | date: 'MMM d, yyyy'}}</small>
 
       <div ng-hide="post.format === 'aside' || post.format === 'link'"
         ng-bind-html="post.excerpt.rendered"
@@ -24,10 +23,21 @@
         ng-bind-html="post.content.rendered"
         class="post-callout-excerpt"></div>
     </div>
+    <div class="meta ng-cloak">
+      <p>Posted: <span>{{post.date | date: 'MMM d, yyyy'}}</span></p>
+      <p ng-if="post.categories[0].slug !== 'uncategorized'">Categorized:
+      <span ng-repeat="cat in post.categories">
+        <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
+      </p>
+      <p ng-if="post.tags[0].slug">Tagged:
+      <span ng-repeat="tag in post.tags">
+        <a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
+      </p>
+    </div>
   </md-content>
 </div>
 
-<div class="pagination">
+<div class="pagination ng-cloak">
   <span>
     <a ng-if="$ctrl.page > 1"
     ng-click="$ctrl.previousPage()" href>newer posts</a>

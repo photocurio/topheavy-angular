@@ -42,7 +42,7 @@ h1 {
 h2 {
   font-family: 'Trocchi', serif;
   font-weight: normal;
-  margin: .45em 0;
+  margin: 0 0 .45em;
   a {
     text-decoration: none;
   }
@@ -56,6 +56,11 @@ pre {
   padding: 1em;
   overflow-x: scroll;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 .site {
   display: flex;
   flex-direction: column;
@@ -127,12 +132,13 @@ md-nav-ink-bar {
   flex-wrap: wrap;
   justify-content: space-between;
   &-callout {
-    flex: 0 1 32%;
-    margin-bottom: 24px;
+    flex: 0 1 calc(33.333% - 1em);
+    margin-bottom: 1em;
     background-color: white;
-    border-bottom: 1px solid #ddd;
-    &-meta {
-      font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    &-content {
+      flex: 1 1 auto;
     }
     &-thumbnail {
       border-radius: 5px;
@@ -142,10 +148,12 @@ md-nav-ink-bar {
   }
 }
 .meta {
-  padding: .5em 0;
+  padding-bottom: 1em;
   font-size: 90%;
-  border-top: 3px double #888;
-  border-bottom: 3px double #888;
+  border-bottom: 3px double #bbb;
+  p {
+    margin: .5em 0;
+  }
   span {
     font-weight: bold;
     &::after {
@@ -176,14 +184,14 @@ md-nav-ink-bar {
   margin: 0 20px 0 0;
 }
 
-@media only screen and (min-width: 660px) and (max-width: 1000px) {
+@media only screen and (min-width: 730px) and (max-width: 1100px) {
   .posts {
     &-callout {
-      flex-basis: 48%;
+      flex-basis: calc(50% - .75em);
     }
   }
 }
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 730px) {
   .posts {
     &-callout {
       flex-basis: 100%;
