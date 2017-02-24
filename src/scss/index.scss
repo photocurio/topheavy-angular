@@ -142,6 +142,7 @@ md-nav-ink-bar {
     }
     &-thumbnail {
       border-radius: 5px;
+      margin-top: .4em;
       max-width: 100%;
       height: auto;
     }
@@ -169,6 +170,11 @@ md-nav-ink-bar {
 }
 .post-single {
   max-width: 900px;
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
 }
 .wp-caption {
   &-text {

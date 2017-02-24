@@ -6,7 +6,7 @@ module.exports = {
 };
 
 /** @ngInject */
-function collectionController($stateParams, $scope, $filter, $log, $state) {
+function collectionController($stateParams, $rootScope, $scope, $filter, $log, $state) {
   var SELF = this;
   var wp = new WPAPI({
     endpoint: 'http://topheavypilesofbooks.com/wp-json'
@@ -47,8 +47,15 @@ function collectionController($stateParams, $scope, $filter, $log, $state) {
 
   // setup the query if the taxonomy slug is in the URL
   if ($stateParams.slug) {
+    var slug = $stateParams.slug;
 
     if ($stateParams.taxonomy && $stateParams.taxonomy === 'category') {
+      // first set the nav highlight variable
+      if (slug === 'web-development' || slug === 'wordpress' || slug === 'javascript') {
+        $rootScope.currentNavItem = 'webdev';
+      } else if (slug === 'books') {
+        $rootScope.currentNavItem = 'books';
+      }
       // first use the slug to lookup the category ID
       wp.categories().slug($stateParams.slug).then(function(cats) {
         // then use the ID to get the posts
@@ -56,6 +63,7 @@ function collectionController($stateParams, $scope, $filter, $log, $state) {
       }).then(success, fail);
 
     } else if ($stateParams.taxonomy && $stateParams.taxonomy === 'tag') {
+      $rootScope.currentNavItem = null;
       wp.tags().slug($stateParams.slug).then(function(cats) {
         return wp.posts().tags(cats[0].id).param('page', SELF.page).embed();
       }).then(success, fail);
