@@ -1,13 +1,14 @@
 module.exports = routesConfig;
 
+var collectionResolve = require('../app/components/collection/collection-resolve');
+var pageResolve = require('../app/components/page/page-resolve');
+var singleReslove = require('../app/components/single/single-resolve');
+
 /** @ngInject */
 function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
-
   $locationProvider.html5Mode(true).hashPrefix('!');
-
   $urlRouterProvider.otherwise('/');
-
-  $stateProvider.state('app', {
+  $stateProvider.state('home', {
     url: '/?page',
     params: {
       page: {
@@ -15,7 +16,8 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
         squash: true
       }
     },
-    component: 'postsInCollection'
+    component: 'collectionPosts',
+    resolve: collectionResolve
   })
   .state('collection', {
     url: '/:taxonomy/:slug?page',
@@ -25,10 +27,17 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
         squash: true
       }
     },
-    component: 'postsInCollection'
+    component: 'collectionPosts',
+    resolve: collectionResolve
+  })
+  .state('page', {
+    url: '/:slug',
+    component: 'page',
+    resolve: pageResolve
   })
   .state('single', {
     url: '/:year/:month/:slug',
-    component: 'singlePost'
+    component: 'singlePost',
+    resolve: singleReslove
   });
 }

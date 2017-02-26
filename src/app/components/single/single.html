@@ -1,15 +1,16 @@
-<div class="post-single ng-cloak">
-  <h1 ng-bind-html="$ctrl.post.title.rendered" class="post-single-title"></h1>
-  <div ng-bind-html="$ctrl.post.content.rendered" class="post-single-content clearfix">
+<div class="post ng-cloak">
+  <h1 ng-bind-html="$ctrl.single.title.rendered" class="post-single-title"></h1>
+  <div ng-bind-html="$ctrl.single.content.rendered" class="post-single-content clearfix">
 </div>
 <div class="meta ng-cloak">
-  <p>Posted: <span>{{$ctrl.post.date | date: 'MMM d, yyyy'}}</span></p>
-  <p ng-if="$ctrl.post.categories[0].slug !== 'uncategorized'">Categorized:
-  <span ng-repeat="cat in $ctrl.post.categories">
+  <p>Posted: <span>{{$ctrl.single.date | date: 'MMM d, yyyy'}}</span></p>
+  <p>Updated: <span>{{$ctrl.single.modified | date: 'MMM d, yyyy'}}</span></p>
+  <p ng-if="$ctrl.single.categories[0].slug !== 'uncategorized'">Categorized:
+    <span ng-repeat="cat in $ctrl.single.categories">
     <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
   </p>
-  <p ng-if="$ctrl.post.tags[0].slug">Tagged:
-  <span ng-repeat="tag in $ctrl.post.tags">
+  <p ng-if="$ctrl.single.tags[0].slug">Tagged:
+    <span ng-repeat="tag in $ctrl.single.tags">
     <a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
   </p>
 </div>

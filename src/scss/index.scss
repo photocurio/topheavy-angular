@@ -1,4 +1,8 @@
 @import '../../node_modules/angular-material/angular-material.scss';
+
+$linkColor: firebrick;
+$highlightColor: crimson;
+
 .clearfix {
   &::after {
     content: '';
@@ -6,18 +10,20 @@
     clear: both;
   }
 }
+
 html {
   font-family: Georgia, serif;
   font-size: 1.1em;
 }
-$linkColor: firebrick;
-$highlightColor: red;
+
 body {
   font-weight: 400;
   display: flex;
 }
+
 a {
   color: $linkColor;
+  text-decoration: none;
   &:hover {
     color: $highlightColor;
   }
@@ -51,14 +57,15 @@ code {
   background-color: oldlace;
   padding: 0 3px;
 }
+
 pre {
   background-color: oldlace;
   padding: 1em;
   overflow-x: scroll;
 }
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+hr {
+  border: none;
+  border-bottom: 3px double #bbb;
 }
 
 .site {
@@ -87,7 +94,7 @@ pre {
   }
   &-footer {
     flex-shrink: 0;
-    margin-bottom: 24px;
+    padding-bottom: 24px;
   }
   &-content {
     flex: 1 0 auto;
@@ -108,7 +115,7 @@ pre {
 }
 .md-nav{
   &-bar {
-    border-color: #ddd;
+    border-bottom: 1px solid #bbb;
   }
   &-item {
     background-color: white;
@@ -168,7 +175,7 @@ md-nav-ink-bar {
     }
   }
 }
-.post-single {
+.single-post {
   max-width: 900px;
   img {
     max-width: 100%;

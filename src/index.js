@@ -8,8 +8,9 @@ require('angular-aria');
 
 var routesConfig = require('./config/routes');
 var themeConfig = require('./config/theme');
-var postsInCollection = require('./app/components/collections/collection');
+var collectionPosts = require('./app/components/collection/collection');
 var singlePost = require('./app/components/single/single');
+var pageComponent = require('./app/components/page/page');
 
 // Webpack deals with the SASS
 require('./scss/index.scss');
@@ -17,6 +18,8 @@ require('./scss/index.scss');
 angular.module('app', ['ui.router', 'ngSanitize', 'ngMaterial', 'ngAria', 'ngMessages'])
   .config(routesConfig)
   .config(themeConfig)
-  .component('app', postsInCollection)
-  .component('postsInCollection', postsInCollection)
+  // .run(titleConfig)
+  .component('home', collectionPosts)
+  .component('collectionPosts', collectionPosts)
+  .component('page', pageComponent)
   .component('singlePost', singlePost);
