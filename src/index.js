@@ -18,7 +18,6 @@ require('./scss/index.scss');
 angular.module('app', ['ui.router', 'ngSanitize', 'ngMaterial', 'ngAria', 'ngMessages'])
   .config(routesConfig)
   .config(themeConfig)
-  // .run(titleConfig)
   .component('home', collectionPosts)
   .component('collectionPosts', collectionPosts)
   .component('page', pageComponent)

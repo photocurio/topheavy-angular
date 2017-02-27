@@ -7,7 +7,7 @@ module.exports = {
 /** @ngInject */
 function singlePost($stateParams, $log, $rootScope) {
   var wp = new WPAPI({
-    endpoint: 'http://topheavypilesofbooks.com/wp-json'
+    endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
   var fail = function (error) {

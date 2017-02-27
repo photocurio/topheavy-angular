@@ -1,0 +1,18 @@
+.post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.wp-caption {
+  &-text {
+    font-style: italic;
+  }
+}
+.aligncenter {
+  align-self: center;
+  text-align: center;
+}
+.alignleft {
+  float: left;
+  margin: 0 20px 0 0;
+}

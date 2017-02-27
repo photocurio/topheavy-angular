@@ -4,7 +4,7 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
-    <title>{{title + ' :'}} Peter Mumford</title>
+    <title ng-bind="title + ' : Peter Mumford'"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta name="robots" content="noindex, follow">
@@ -39,7 +39,7 @@
       <main ui-view class="site-content"></main>
 
       <footer class="site-footer">
-        This site is powered by an Angular front end and WordPress back end.
+        This site is powered by an Angular front end and a WordPress back end.
       </footer>
 
     </div>

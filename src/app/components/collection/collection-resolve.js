@@ -11,7 +11,7 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
   var taxonomy = $stateParams.taxonomy;
 
   var wp = new WPAPI({
-    endpoint: 'http://topheavypilesofbooks.com/wp-json'
+    endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
   // error handler
@@ -43,15 +43,15 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
       // set document title on rootscope
       $rootScope.title = cats[0].name;
       // then use the ID to get the posts
-      return wp.posts().categories(cats[0].id).perPage(12).param('page', page).embed();
+      return wp.posts().categories(cats[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
   } else if (taxonomy === 'tag') {
     return wp.tags().slug(slug).then(function(tags) {
       $rootScope.title = tags[0].name;
-      return wp.posts().tags(tags[0].id).perPage(12).param('page', page).embed();
+      return wp.posts().tags(tags[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
   } else {
     $rootScope.title = 'topheavypilesofbooks';
-    return wp.posts().param('page', page).perPage(12).embed().then(success, fail);
+    return wp.posts().param('page', page).perPage(9).embed().then(success, fail);
   }
 };

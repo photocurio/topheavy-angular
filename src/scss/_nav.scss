@@ -1,0 +1,20 @@
+.md-nav{
+  &-bar {
+    border-bottom: 1px solid #bbb;
+  }
+  &-item {
+    background-color: white;
+    margin-right: 8px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+md-nav-ink-bar {
+  background-color: $linkColor;
+  bottom: 1px;
+}
+
+.md-button._md-nav-button {
+  margin: 0;
+}
