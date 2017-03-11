@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const HubRegistry = require('gulp-hub');
 const browserSync = require('browser-sync');
-
 const conf = require('./conf/gulp.conf');
 
 // Load some files into the registry

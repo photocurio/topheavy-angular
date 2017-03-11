@@ -17,6 +17,9 @@ function pageQuery($stateParams, $log, $rootScope) {
   var success = function (response) {
     // the response will be an array with one post object
     var page = response[0];
+    if (page.slug === 'about-me') {
+      $rootScope.totem = 'scooter';
+    }
     // set document title
     $rootScope.title = page.title.rendered;
     return page;

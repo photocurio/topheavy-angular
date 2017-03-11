@@ -56,7 +56,7 @@ module.exports = {
         unused: true,
         dead_code: true,
         warnings: false
-      } // eslint-disable-line camelcase
+      }
     }),
     new ExtractTextPlugin('index-[contenthash].css'),
     new webpack.optimize.CommonsChunkPlugin({
@@ -64,6 +64,7 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
+        context: '/',
         postcss: () => [autoprefixer]
       }
     })

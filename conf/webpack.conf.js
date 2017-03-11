@@ -4,14 +4,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FailPlugin = require('webpack-fail-plugin');
 const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   module: {
     loaders: [{
         test: /.json$/,
-        loaders: [
-          'json-loader'
-        ]
+        loader: 'json-loader'
       },
       {
         test: /.js$/,
@@ -21,25 +20,24 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'postcss-loader'
-        ]
+        loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', 'postcss-loader']
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: [
-          'ng-annotate-loader'
-        ]
+        loader: 'ng-annotate-loader'
       },
       {
         test: /.html$/,
-        loaders: [
-          'html-loader'
-        ]
+        loader: 'html-loader'
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.(ttf|otf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?|(jpg|gif)$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -50,12 +48,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
     }),
+    new webpack.ProvidePlugin(
+      {
+        'window.jQuery': 'jquery'
+      }
+    ),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: () => [autoprefixer]
       },
       debug: true
-    })
+    }),
+    new ExtractTextPlugin('styles.css')
   ],
   devtool: 'source-map',
   output: {

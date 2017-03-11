@@ -8,7 +8,7 @@
   span {
     font-weight: bold;
     &::after {
-      content: ','
+      content: ', '
     }
     &:last-of-type:after {
       content: '.';

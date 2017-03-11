@@ -2,7 +2,8 @@ module.exports = {
   controller: collectionController,
   template: require('./collection.html'),
   bindings: {
-    collection: '<'
+    collection: '<',
+    totem: '<'
   }
 };
 

@@ -1,0 +1,77 @@
+// $font-family-base:        Georgia, serif;
+// $font-size-base:          17px;
+// $line-height-base:        1.475;
+// $headings-font-family:    'Trocchi', serif;
+//
+// $brand-primary:           firebrick;
+// $link-hover-color:        crimson;
+
+$bootstrap-sass-asset-helper: false;
+// Journal 3.3.7
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+
+$brand-primary:         firebrick;
+$brand-success:         #22B24C;
+$brand-info:            #369;
+$brand-warning:         #F5E625;
+$brand-danger:          #F57A00;
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               #fff;
+//** Global text color on `<body>`.
+$text-color:            #222;
+
+//** Global textual link color.
+$link-color:            $brand-primary;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      crimson;
+//** Link hover decoration.
+$link-hover-decoration: none;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+// $font-family-sans-serif:  "Oswald", sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+
+$font-size-base:          17px;
+
+$line-height-base:        1.475;
+// $font-family-base:        $font-family-serif;
+$headings-font-family:    "Trocchi", sans-serif;
+$headings-font-weight:    400;
+$headings-color:          #666;
+
+
+//== Iconography
+//
+//## Specify custom location and filename of the included Glyphicons icon font. Useful for those including Bootstrap via Bower.
+
+//** Load fonts from this directory.
+$icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/");
+//** File name for all font files.
+$icon-font-name: "glyphicons-halflings-regular";
+//** Element ID within SVG icon file.
+$icon-font-svg-id: "glyphicons_halflingsregular";
+
+// Make the site 1200 px wide
+$grid-gutter-width: 30px;
+
+$container-large-desktop: (1200px + $grid-gutter-width);
+
+$navbar-border-radius: 0;
+$navbar-default-bg: white;
+$navbar-padding-horizontal: 0;
+// $navbar-default-link-active-bg: green;
+$navbar-default-border: none;

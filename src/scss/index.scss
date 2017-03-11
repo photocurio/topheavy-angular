@@ -1,4 +1,4 @@
-@import '../../node_modules/angular-material/angular-material.scss';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
 $linkColor: firebrick;
 $highlightColor: crimson;
@@ -12,8 +12,13 @@ $codeColor: #f5ede8;
   }
 }
 
+* {
+  background-color: pink !important;
+}
+
 @import 'elements';
 @import 'layout';
+@import 'header';
 @import 'posts';
 @import 'nav';
 @import 'meta';

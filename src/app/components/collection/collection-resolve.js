@@ -42,7 +42,13 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
     return wp.categories().slug(slug).then(function(cats) {
       // set document title on rootscope
       $rootScope.title = cats[0].name;
-      // then use the ID to get the posts
+
+      if (cats[0].slug === 'books') {
+        $rootScope.totem = 'umbrella';
+      }
+      if (cats[0].slug === 'web-development'){
+        $rootScope.totem = 'balloon';
+      }
       return wp.posts().categories(cats[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
   } else if (taxonomy === 'tag') {
@@ -52,6 +58,7 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
     }).then(success, fail);
   } else {
     $rootScope.title = 'topheavypilesofbooks';
+    $rootScope.totem = 'vw-bug';
     return wp.posts().param('page', page).perPage(9).embed().then(success, fail);
   }
 };

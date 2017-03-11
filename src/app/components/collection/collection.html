@@ -1,46 +1,49 @@
-<div class="posts ng-cloak">
-  <md-content ng-repeat="post in $ctrl.collection"
-    class="posts-callout" ng-class="'post-format-' + post.format">
-    <a ng-if="post.featuredimage"
-      ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
-    <img ng-src="{{post.featuredimage[0].media_details.sizes.medium.source_url ||
-      post.featuredimage[0].media_details.sizes.thumbnail.source_url}}"
-      ng-attr-alt="{{post.better_featured_image.alt_text}}"
-      class="posts-callout-thumbnail">
-    </a>
-    <div class="posts-callout-content">
-      <h2 class="posts-callout-title" ng-hide="post.format === 'aside'">
-        <a ng-hide="post.format === 'link'" ui-sref="single({slug: post.slug, year: post.year, month: post.month})"
-          ng-bind-html="post.title.rendered"></a>
-        <span ng-show="post.format === 'link'" ng-bind-html="post.title.rendered"></span>
-      </h2>
+<div class="container">
+  <div class="posts ng-cloak">
+    <md-content ng-repeat="post in $ctrl.collection"
+      class="posts-callout" ng-class="'post-format-' + post.format">
+      <a ng-if="post.featuredimage"
+        ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
+      <img ng-src="{{post.featuredimage[0].media_details.sizes.medium.source_url ||
+        post.featuredimage[0].media_details.sizes.thumbnail.source_url}}"
+        ng-attr-alt="{{post.better_featured_image.alt_text}}"
+        class="posts-callout-thumbnail">
+      </a>
+      <div class="posts-callout-content">
+        <h2 class="posts-callout-title" ng-hide="post.format === 'aside'">
+          <a ng-hide="post.format === 'link'"
+            ui-sref="single({slug: post.slug, year: post.year, month: post.month})"
+            ng-bind-html="post.title.rendered"></a>
+          <span ng-show="post.format === 'link'" ng-bind-html="post.title.rendered"></span>
+        </h2>
 
-      <div ng-hide="post.format === 'aside' || post.format === 'link'"
-        ng-bind-html="post.excerpt.rendered"
-        class="post-callout-excerpt"></div>
+        <div ng-hide="post.format === 'aside' || post.format === 'link'"
+          ng-bind-html="post.excerpt.rendered"
+          class="post-callout-excerpt"></div>
 
-      <div ng-show="post.format === 'aside' || post.format === 'link'"
-        ng-bind-html="post.content.rendered"
-        class="post-callout-excerpt"></div>
-    </div>
-    <div class="meta ng-cloak">
-      <p ng-if="post.categories[0].slug !== 'uncategorized'">Categorized:
-      <span ng-repeat="cat in post.categories">
-        <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
-      </p>
-      <p ng-if="post.tags[0].slug">Tagged:
-      <span ng-repeat="tag in post.tags">
-        <a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
-      </p>
-    </div>
-  </md-content>
+        <div ng-show="post.format === 'aside' || post.format === 'link'"
+          ng-bind-html="post.content.rendered"
+          class="post-callout-excerpt"></div>
+      </div>
+      <div class="meta ng-cloak">
+        <p ng-if="post.categories[0].slug !== 'uncategorized'">Categorized:
+          <span ng-repeat="cat in post.categories"><a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
+        </p>
+        <p ng-if="post.tags[0].slug">Tagged:
+          <span ng-repeat="tag in post.tags"><a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
+        </p>
+      </div>
+    </md-content>
+  </div>
 </div>
-
-<div class="pagination ng-cloak">
-  <span>
-    <a ng-if="$ctrl.page < $ctrl.collection._paging.totalPages" ng-click="$ctrl.nextPage()" href>older posts</a>
-  </span>
-  <span>
-    <a ng-if="$ctrl.page > 1" ng-click="$ctrl.previousPage()" href>newer posts</a>
-  </span>
+<div class="container ng-cloak">
+  <div class="pagination-links">
+    <span>
+      <a ng-if="$ctrl.page < $ctrl.collection._paging.totalPages" ng-click="$ctrl.nextPage()" href>older posts</a>
+    </span>
+    <span>
+      <a ng-if="$ctrl.page > 1" ng-click="$ctrl.previousPage()" href>newer posts</a>
+    </span>
+  </div>
+  <hr>
 </div>

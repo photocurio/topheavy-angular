@@ -1,47 +1,25 @@
 <!doctype html>
 <html ng-app="app">
 
-  <head>
+  <head lang="en">
     <base href="/">
     <meta charset="utf-8">
-    <title ng-bind="title + ' : Peter Mumford'"></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
     <meta name="robots" content="noindex, follow">
+    <title ng-bind="title + ': Peter Mumford'"></title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Trocchi" rel="stylesheet">
   </head>
 
   <body>
-    <div class="site wrapper">
+    <div class="wrapper">
+      <site-header></site-header>
+      <navbar></navbar>
 
-      <header class="site-header">
-        <div class="site-header-banner clearfix">
-          <div class="site-header-banner-headers">
-            <h1><a ui-sref="home({page:1})" ng-click="currentNavItem = 'home'" href>topHeavyPilesOfBooks</a></h1>
-            <h3>Cutting edge web applications for the 19th Century</h3>
-          </div>
-          <p class="vcard">Peter Mumford<br>
-          <a href="https://twitter.com/photocurio">@photocurio</a><br>
-          <a href="mailto:sunraydust@gmail.com">sunraydust@gmail.com</a></p>
-        </div>
+      <main ui-view></main>
 
-        <md-nav-bar md-selected-nav-item="currentNavItem"
-          nav-bar-aria-label="navigation links"
-          ng-init="currentNavItem='home'">
-          <md-nav-item md-nav-sref="home({page:1})" name="home">Home</md-nav-item>
-          <md-nav-item md-nav-sref="page({slug:'about-me'})" name="about">About Me</md-nav-item>
-          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'web-development', page:1})" name="webdev">Web Development</md-nav-item>
-          <md-nav-item md-nav-sref="collection({taxonomy:'category', slug:'books', page:1})" name="books">Books</md-nav-item>
-        </md-nav-bar>
-      </header>
-
-      <main ui-view class="site-content"></main>
-
-      <footer class="site-footer">
-        This site is powered by an Angular front end and a WordPress back end.
-      </footer>
-
+      <site-footer></site-footer>
     </div>
   </body>
 

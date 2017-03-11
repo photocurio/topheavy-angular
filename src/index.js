@@ -1,23 +1,26 @@
 var angular = require('angular');
-
 require('angular-ui-router');
 require('angular-sanitize');
-require('angular-material');
-require('angular-messages');
-require('angular-aria');
+require('angular-animate');
+require('bootstrap-loader');
+require('angular-ui-bootstrap');
 
-var routesConfig = require('./config/routes');
-var themeConfig = require('./config/theme');
+var routesConfig = require('./app/config/routes');
+var siteHeader = require('./app/components/header/header');
+var navbar = require('./app/components/navbar/navbar');
+var siteFooter = require('./app/components/footer/footer');
 var collectionPosts = require('./app/components/collection/collection');
 var singlePost = require('./app/components/single/single');
 var pageComponent = require('./app/components/page/page');
 
 // Webpack deals with the SASS
-require('./scss/index.scss');
+// require('./scss/index.scss');
 
-angular.module('app', ['ui.router', 'ngSanitize', 'ngMaterial', 'ngAria', 'ngMessages'])
+angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
   .config(routesConfig)
-  .config(themeConfig)
+  .component('siteHeader', siteHeader)
+  .component('navbar', navbar)
+  .component('siteFooter', siteFooter)
   .component('home', collectionPosts)
   .component('collectionPosts', collectionPosts)
   .component('page', pageComponent)

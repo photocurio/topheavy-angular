@@ -1,38 +1,28 @@
-.site {
+.wrapper {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  &-header {
+  > site-header {
     flex-shrink: 0;
-    &-banner {
-      &-headers {
-        float: left;
-        h1 {
-          margin-bottom: 0;
-        }
-        h3 {
-          font-weight: normal;
-          font-style: italic;
-          margin-top: 0;
-        }
-      }
-      .vcard {
-        text-align: right;
-        float: right;
-      }
-    }
   }
-  &-footer {
+  > navbar {
     flex-shrink: 0;
-    padding-bottom: 24px;
   }
-  &-content {
+  > main {
     flex: 1 0 auto;
     margin: 24px 0;
   }
-  &.wrapper{
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
+  > site-footer {
+    flex-shrink: 0;
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .site {
+    &-header {
+      background-image: none !important;
+    }
   }
 }
