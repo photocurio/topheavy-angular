@@ -5,7 +5,7 @@ module.exports = {
 };
 
 /** @ngInject */
-function collectionPosts($stateParams, $log, $filter, $rootScope) {
+function collectionPosts($stateParams, $state, $log, $filter, $rootScope) {
   var page = parseInt($stateParams.page, 10) || 1;
   var slug = $stateParams.slug;
   var taxonomy = $stateParams.taxonomy;
@@ -21,6 +21,13 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
 
   // success handler
   var success = function (response) {
+    // for re-sequencing posts
+    function arrayMove(arr, fromIndex, toIndex) {
+      var element = arr[fromIndex];
+      arr.splice(fromIndex, 1);
+      arr.splice(toIndex, 0, element);
+    }
+
     var posts = response;
     for (var i = 0; i < posts.length; i++) {
       // filter the date so it can be used by the router
@@ -32,6 +39,15 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
       posts[i].featuredimage = posts[i]._embedded['wp:featuredmedia'];
       delete posts[i]._embedded;
       delete posts[i]._links;
+    }
+
+    // special handling for post.id 1222
+    for (var i = 0; i < posts.length; i++) {
+      if (posts[i].id === 1222) {
+        posts[i].sticky = false;
+        arrayMove(posts, i, 3);
+        break;
+      }
     }
     return posts;
   };
@@ -51,11 +67,18 @@ function collectionPosts($stateParams, $log, $filter, $rootScope) {
       }
       return wp.posts().categories(cats[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
+
   } else if (taxonomy === 'tag') {
     return wp.tags().slug(slug).then(function(tags) {
       $rootScope.title = tags[0].name;
       return wp.posts().tags(tags[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
+
+  } else if (!taxonomy && !slug && page === 1){
+    $rootScope.title = 'topheavypilesofbooks';
+    $rootScope.totem = 'vw-bug';
+    return wp.posts().perPage(10).embed().then(success, fail);
+
   } else {
     $rootScope.title = 'topheavypilesofbooks';
     $rootScope.totem = 'vw-bug';

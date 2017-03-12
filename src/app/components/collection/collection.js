@@ -9,7 +9,10 @@ module.exports = {
 
 /** @ngInject */
 function collectionController($stateParams, $state) {
+
   var SELF = this;
+
+  SELF.stateName = $state.current.name;
 
   // Pagination functions
   SELF.page = parseInt($stateParams.page, 10) || 10;

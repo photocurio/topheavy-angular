@@ -24,7 +24,22 @@
     }
   }
 }
-
+.home {
+  .posts {
+    &-callout {
+      &.sticky {
+        flex: 0 1 100%;
+      }
+      &-thumbnail {
+        max-height: none;
+      }
+    }
+  }
+}
+.permalink {
+  text-align: right;
+  font-weight: 700;
+}
 .pagination-links {
   display: flex;
   flex-wrap: wrap;

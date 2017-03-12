@@ -1,13 +1,18 @@
-<div class="container">
+<div class="container" ng-class="$ctrl.stateName">
   <div class="posts ng-cloak">
     <md-content ng-repeat="post in $ctrl.collection"
-      class="posts-callout" ng-class="'post-format-' + post.format">
+      class="posts-callout" ng-class="{sticky: post.sticky}">
       <a ng-if="post.featuredimage"
         ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
-      <img ng-src="{{post.featuredimage[0].media_details.sizes.medium.source_url ||
-        post.featuredimage[0].media_details.sizes.thumbnail.source_url}}"
-        ng-attr-alt="{{post.better_featured_image.alt_text}}"
-        class="posts-callout-thumbnail">
+        <img ng-if="post.sticky"
+          ng-src="{{post.featuredimage[0].media_details.sizes.full.source_url}}"
+          ng-attr-alt="{{post.better_featured_image.alt_text}}"
+          class="posts-callout-thumbnail">
+        <img ng-if="!post.sticky"
+          ng-src="{{post.featuredimage[0].media_details.sizes.medium.source_url ||
+          post.featuredimage[0].media_details.sizes.thumbnail.source_url}}"
+          ng-attr-alt="{{post.better_featured_image.alt_text}}"
+          class="posts-callout-thumbnail">
       </a>
       <div class="posts-callout-content">
         <h2 class="posts-callout-title" ng-hide="post.format === 'aside'">
@@ -18,8 +23,10 @@
         </h2>
 
         <div ng-hide="post.format === 'aside' || post.format === 'link'"
-          ng-bind-html="post.excerpt.rendered"
-          class="post-callout-excerpt"></div>
+          class="post-callout-excerpt">
+          <span ng-bind-html="post.excerpt.rendered"></span>
+          <a ui-sref="single({slug: post.slug, year: post.year, month: post.month})">Read the post</a>
+        </div>
 
         <div ng-show="post.format === 'aside' || post.format === 'link'"
           ng-bind-html="post.content.rendered"
