@@ -7,6 +7,15 @@ module.exports = {
 };
 
 /** @ngInject */
-function singleController($element) {
-  $element.addClass('single-post');
+// function singleController($element, $timeout, $log) {
+function singleController($element, $timeout, $log, highlightService) {
+  var SELF = this;
+
+  SELF.$onInit = function(){
+    $element.addClass('single-post');
+  };
+
+  SELF.$postLink = function() {
+    $timeout(highlightService.initHighlighting, 0);
+  };
 }

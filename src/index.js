@@ -1,11 +1,12 @@
 var angular = require('angular');
 require('angular-ui-router');
 require('angular-sanitize');
-require('angular-animate');
 require('bootstrap-loader');
 require('angular-ui-bootstrap');
 
-var routesConfig = require('./app/config/routes');
+var routesConfig = require('./routes.config');
+var WPAPI = require('./services/wpapi.factory');
+var highlightService = require('./services/highlight.service');
 var siteHeader = require('./app/components/header/header');
 var navbar = require('./app/components/navbar/navbar');
 var siteFooter = require('./app/components/footer/footer');
@@ -13,11 +14,10 @@ var collectionPosts = require('./app/components/collection/collection');
 var singlePost = require('./app/components/single/single');
 var pageComponent = require('./app/components/page/page');
 
-// Webpack deals with the SASS
-// require('./scss/index.scss');
-
-angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
+angular.module('app', ['ui.router', 'ngSanitize', 'ui.bootstrap'])
   .config(routesConfig)
+  .service('highlightService', highlightService)
+  .factory('WPAPI', WPAPI)
   .component('siteHeader', siteHeader)
   .component('navbar', navbar)
   .component('siteFooter', siteFooter)

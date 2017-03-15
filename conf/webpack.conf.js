@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader', 'postcss-loader']
       },
       {
         test: /\.js$/,
@@ -43,7 +43,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')
@@ -61,7 +61,7 @@ module.exports = {
     }),
     new ExtractTextPlugin('styles.css')
   ],
-  devtool: 'source-map',
+  // devtool: 'source-map',
   output: {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'

@@ -17,9 +17,13 @@
   &.umbrella {
     background-image: url('/svg/umbrella.svg');
   }
+  &.bicycle {
+    background-image: url('/svg/bicycle.svg');
+  }
+
   &-banner {
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     &-headers {
       display: flex;
       flex-direction: row;
@@ -28,6 +32,7 @@
       justify-content: space-between;
       h1 {
         margin-bottom: 0;
+        margin-top: 5px;
         line-height: 1.15;
         background-color: rgba(255,255,255,.25);
       }
@@ -45,7 +50,6 @@
       margin: 0;
       a {
         background-color: rgba(255,255,255,.55);
-        margin-left: 10px;
       }
     }
   }

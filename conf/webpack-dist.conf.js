@@ -26,7 +26,19 @@ module.exports = {
         test: /\.(css|scss)$/,
         loaders: ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
-          loader: 'css-loader?minimize!postcss-loader!sass-loader'
+          use: [{
+            loader: 'css-loader',
+            options: {
+              'minimize': true,
+              'sourceMap': false
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {'sourceMap': false}
+          }, {
+            loader: 'sass-loader',
+            options: {'sourceMap': false}
+          }]
         })
       },
       {
@@ -46,7 +58,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
       template: conf.path.src('index.html')

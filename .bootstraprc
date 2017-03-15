@@ -14,6 +14,7 @@ bootstrapVersion: 3
 styleLoaders:
   - style-loader
   - css-loader
+  - postcss-loader
   - sass-loader
 
 # It depends on value of NODE_ENV environment variable
@@ -23,7 +24,15 @@ styleLoaders:
 # It depends on value of NODE_ENV environment variable
 # This param can also be set in webpack config:
 #   entry: 'bootstrap-loader/extractStyles'
-extractStyles: true
+# extractStyles: true
+
+disableSassSourceMap: true
+
+env:
+  development:
+    extractStyles: false
+  production:
+    extractStyles: true
 
 # Customize Bootstrap variables that get imported before the original Bootstrap variables.
 # Thus, derived Bootstrap variables can depend on values from here.
@@ -38,7 +47,7 @@ bootstrapCustomizations: './src/scss/bootstrap-config/_customizations.scss'
 # Import your custom styles here
 # Usually this endpoint-file contains list of @imports of your application styles
 #
-# appStyles: ./path/to/your/app/styles/endpoint.scss
+appStyles: ./src/scss/_index.scss
 
 
 ### Bootstrap styles
@@ -55,34 +64,34 @@ styles:
   # Core CSS
   scaffolding: true
   type: true
-  code: true
+  code: false
   grid: true
   tables: true
   forms: true
   buttons: true
 
   # Components
-  component-animations: true
-  dropdowns: true
-  button-groups: true
-  input-groups: true
+  component-animations: false
+  dropdowns: false
+  button-groups: false
+  input-groups: false
   navs: true
   navbar: true
-  breadcrumbs: true
-  pagination: true
-  pager: true
-  labels: true
-  badges: true
-  jumbotron: true
-  thumbnails: true
-  alerts: true
-  progress-bars: true
-  media: true
-  list-group: true
-  panels: true
-  wells: true
-  responsive-embed: true
-  close: true
+  breadcrumbs: false
+  pagination: false
+  pager: false
+  labels: false
+  badges: false
+  jumbotron: false
+  thumbnails: false
+  alerts: false
+  progress-bars: false
+  media: false
+  list-group: false
+  panels: false
+  wells: false
+  responsive-embed: false
+  close: false
 
   # Components w/ JavaScript
   modals: false

@@ -1,11 +1,9 @@
-var WPAPI = require('wpapi');
-
 module.exports = {
   page: pageQuery
 };
 
 /** @ngInject */
-function pageQuery($stateParams, $log, $rootScope) {
+function pageQuery($stateParams, $log, $rootScope, WPAPI) {
   var wp = new WPAPI({
     endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
   });

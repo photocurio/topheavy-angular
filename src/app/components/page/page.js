@@ -8,5 +8,8 @@ module.exports = {
 
 /** @ngInject */
 function pageController($element) {
-  $element.addClass('page');
+  var SELF = this;
+  SELF.$onInit = function(){
+    $element.addClass('page');
+  };
 }

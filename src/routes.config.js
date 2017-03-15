@@ -1,8 +1,9 @@
 module.exports = routesConfig;
 
-var collectionResolve = require('../components/collection/collection-resolve');
-var pageResolve = require('../components/page/page-resolve');
-var singleReslove = require('../components/single/single-resolve');
+// each state has a Resolve Object that fetches the data
+var collectionResolve = require('./app/components/collection/collection-resolve');
+var pageResolve       = require('./app/components/page/page-resolve');
+var singleResolve     = require('./app/components/single/single-resolve');
 
 /** @ngInject */
 function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
@@ -38,6 +39,6 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
   .state('single', {
     url: '/:year/:month/:slug/',
     component: 'singlePost',
-    resolve: singleReslove
+    resolve: singleResolve
   });
 }

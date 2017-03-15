@@ -1,11 +1,9 @@
-var WPAPI = require('wpapi');
-
 module.exports = {
   collection: collectionPosts
 };
 
 /** @ngInject */
-function collectionPosts($stateParams, $state, $log, $filter, $rootScope) {
+function collectionPosts($stateParams, $state, $log, $filter, $rootScope, WPAPI) {
   var page = parseInt($stateParams.page, 10) || 1;
   var slug = $stateParams.slug;
   var taxonomy = $stateParams.taxonomy;

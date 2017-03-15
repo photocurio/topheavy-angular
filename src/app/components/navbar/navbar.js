@@ -6,6 +6,8 @@ module.exports = {
 /** @ngInject */
 function navController() {
   var SELF = this;
-  SELF.isNavCollapsed = true;
-  SELF.isCollapsed = false;
+  SELF.$onInit = function(){
+    SELF.isNavCollapsed = true;
+    SELF.isCollapsed = false;
+  };
 }

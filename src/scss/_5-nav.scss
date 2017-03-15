@@ -1,0 +1,27 @@
+.navbar.navbar-topheavy {
+  border-top-color: darken($navbar-default-bg, 32%);
+  border-bottom-color: darken($navbar-default-bg, 32%);
+  border-left: none;
+  border-right: none;
+  .navbar-toggle {
+    border-radius: 0;
+    border-color: transparent;
+  }
+  .navbar-nav {
+    > li > a {
+      text-transform: uppercase;
+      font-size: 85%;
+      &:hover {
+        color: firebrick;
+      }
+    }
+    > .active > a {
+      color: $navbar-default-link-active-color;
+      background-color: $navbar-default-link-active-bg;
+      cursor: default;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}

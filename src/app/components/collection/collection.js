@@ -2,25 +2,26 @@ module.exports = {
   controller: collectionController,
   template: require('./collection.html'),
   bindings: {
-    collection: '<',
-    totem: '<'
+    collection: '<'
   }
 };
 
 /** @ngInject */
 function collectionController($stateParams, $state) {
 
+  var page = parseInt($stateParams.page, 10) || 10;
   var SELF = this;
 
-  SELF.stateName = $state.current.name;
+  SELF.$onInit = function(){
+    SELF.stateName = $state.current.name;
+    SELF.page = page;
+  };
 
   // Pagination functions
-  SELF.page = parseInt($stateParams.page, 10) || 10;
-
   SELF.nextPage = function() {
-    $state.go('.', {page: SELF.page + 1}, {notify: false});
+    $state.go('.', {page: page + 1}, {notify: false});
   };
   SELF.previousPage = function() {
-    $state.go('.', {page: SELF.page - 1}, {notify: false});
+    $state.go('.', {page: page - 1}, {notify: false});
   };
 }

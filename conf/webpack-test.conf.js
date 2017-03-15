@@ -33,6 +33,6 @@ module.exports = {
       options: {},
       debug: true
     })
-  ],
-  devtool: 'source-map'
+  ]
+  // devtool: 'source-map'
 };

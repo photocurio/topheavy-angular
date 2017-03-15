@@ -1,11 +1,9 @@
-var WPAPI = require('wpapi');
-
 module.exports = {
   single: singlePost
 };
 
 /** @ngInject */
-function singlePost($stateParams, $log, $rootScope) {
+function singlePost($stateParams, $log, $rootScope, WPAPI) {
   var wp = new WPAPI({
     endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
   });
@@ -24,5 +22,6 @@ function singlePost($stateParams, $log, $rootScope) {
     post.tags = post._embedded['wp:term'][1];
     return post;
   };
+  $rootScope.totem = 'bicycle';
   return wp.posts().param('slug', $stateParams.slug).embed().then(success, fail);
 }
