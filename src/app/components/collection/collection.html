@@ -3,7 +3,7 @@
     <md-content ng-repeat="post in $ctrl.collection"
       class="posts-callout" ng-class="{sticky: post.sticky}">
       <a ng-if="post.featuredimage"
-        ui-sref="single({slug: post.slug, year: post.year, month: post.month})">
+        ui-sref="single({year: post.year, month: post.month, slug: post.slug})">
         <img ng-if="post.sticky"
           ng-src="{{post.featuredimage[0].media_details.sizes.full.source_url}}"
           ng-attr-alt="{{post.better_featured_image.alt_text}}"

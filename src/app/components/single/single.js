@@ -8,7 +8,7 @@ module.exports = {
 
 /** @ngInject */
 // function singleController($element, $timeout, $log) {
-function singleController($element, $timeout, $log, highlightService) {
+function singleController($element, $timeout, $log, Prism) {
   var SELF = this;
 
   SELF.$onInit = function(){
@@ -16,6 +16,7 @@ function singleController($element, $timeout, $log, highlightService) {
   };
 
   SELF.$postLink = function() {
-    $timeout(highlightService.initHighlighting, 0);
+    $timeout(Prism.highlightAll, 0);
   };
+
 }

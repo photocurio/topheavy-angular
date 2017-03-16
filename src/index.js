@@ -6,7 +6,7 @@ require('angular-ui-bootstrap');
 
 var routesConfig = require('./routes.config');
 var WPAPI = require('./services/wpapi.factory');
-var highlightService = require('./services/highlight.service');
+var Prism = require('./services/highlight.service');
 var siteHeader = require('./app/components/header/header');
 var navbar = require('./app/components/navbar/navbar');
 var siteFooter = require('./app/components/footer/footer');
@@ -16,7 +16,7 @@ var pageComponent = require('./app/components/page/page');
 
 angular.module('app', ['ui.router', 'ngSanitize', 'ui.bootstrap'])
   .config(routesConfig)
-  .service('highlightService', highlightService)
+  .factory('Prism', Prism)
   .factory('WPAPI', WPAPI)
   .component('siteHeader', siteHeader)
   .component('navbar', navbar)
