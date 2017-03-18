@@ -1,0 +1,19 @@
+# These rules work on Tigertech's server
+
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ /#/$1
+
+RewriteCond %{HTTPS} off
+
+RewriteRule .* https://topheavypilesofbooks.com%{REQUEST_URI} [redirect=302,last]
+
+<ifModule mod_alias.c>
+	RedirectMatch 301 ^/wp-admin https://topheavypilesofbooks.com/topheavy/wp-admin
+</ifModule>

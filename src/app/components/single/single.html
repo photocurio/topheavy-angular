@@ -14,3 +14,34 @@
     <a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
   </p>
 </div>
+
+<div ng-if="false">
+  <h4>Leave a Reply</h4>
+  <form action="" method="post" id="commentform">
+  	<p>Logged in as Peter. Log out?</p>
+    <p>
+      <label for="comment">Comment: </label><br>
+      <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+    </p>
+    <p class="form-submit">
+      <input name="submit" type="submit" id="submit" class="submit" value="Post Comment">
+      <input type="hidden" name="comment_post_ID" value="1222" id="comment_post_ID">
+      <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+    </p>
+    <input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment" value="fa8934f1f0">
+    <script>
+      (function() {
+        if (window === window.parent) {
+          document.getElementById('_wp_unfiltered_html_comment_disabled').name = '_wp_unfiltered_html_comment';
+        }
+      })();
+    </script>
+  </form>
+</div>
+
+  <ul ng-if="$ctrl.single._embedded.replies">
+    <h4>Replies</h4>
+    <li ng-repeat="reply in $ctrl.single._embedded.replies[0]">{{reply.author_name}} commented:<br>
+    <p ng-bind-html="reply.content.rendered"></p>
+  </li>
+  </ul>

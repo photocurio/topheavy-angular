@@ -9,7 +9,7 @@ function collectionPosts($stateParams, $state, $log, $filter, $rootScope, WPAPI)
   var taxonomy = $stateParams.taxonomy;
 
   var wp = new WPAPI({
-    endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
+    endpoint: 'https://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
   // error handler

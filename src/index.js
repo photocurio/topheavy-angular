@@ -2,6 +2,7 @@ var angular = require('angular');
 require('angular-ui-router');
 require('angular-sanitize');
 require('bootstrap-loader');
+require('angular-animate');
 require('angular-ui-bootstrap');
 
 var routesConfig = require('./routes.config');
@@ -14,7 +15,7 @@ var collectionPosts = require('./app/components/collection/collection');
 var singlePost = require('./app/components/single/single');
 var pageComponent = require('./app/components/page/page');
 
-angular.module('app', ['ui.router', 'ngSanitize', 'ui.bootstrap'])
+angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
   .config(routesConfig)
   .factory('Prism', Prism)
   .factory('WPAPI', WPAPI)

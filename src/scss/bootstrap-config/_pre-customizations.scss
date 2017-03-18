@@ -27,16 +27,18 @@ $warmGrey:              #c8ccc0;
 
 //** Background color for `<body>`.
 $body-bg:               #fff;
+
 //** Global text color on `<body>`.
 $text-color:            #4b4d48;
 
 //** Global textual link color.
 $link-color:            $brand-primary;
+
 //** Link hover color set via `darken()` function.
 $link-hover-color:      crimson;
+
 //** Link hover decoration.
 $link-hover-decoration: none;
-
 
 //== Typography
 //
@@ -58,13 +60,12 @@ $headings-color:          #646660;
 //** Load fonts from this directory.
 $icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/");
 //** File name for all font files.
-$icon-font-name: "glyphicons-halflings-regular";
+// $icon-font-name: "glyphicons-halflings-regular";
 //** Element ID within SVG icon file.
-$icon-font-svg-id: "glyphicons_halflingsregular";
+// $icon-font-svg-id: "glyphicons_halflingsregular";
 
 // Make the site 1200 px wide
 $grid-gutter-width: 30px;
-
 $container-large-desktop: (1200px + $grid-gutter-width);
 
 $navbar-border-radius: 0;

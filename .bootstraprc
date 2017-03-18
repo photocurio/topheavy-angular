@@ -6,9 +6,9 @@
 bootstrapVersion: 3
 
 # If Bootstrap version 3 is used - turn on/off custom icon font path
-# useCustomIconFontPath: true
+useCustomIconFontPath: false
 
-# $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts'
+# $icon-font-path: '/src/glyphicons/'
 
 # Webpack loaders, order matters
 styleLoaders:
@@ -30,7 +30,7 @@ disableSassSourceMap: true
 
 env:
   development:
-    extractStyles: false
+    extractStyles: true
   production:
     extractStyles: true
 
@@ -59,7 +59,7 @@ styles:
   # Reset and dependencies
   normalize: true
   print: true
-  glyphicons: false
+  glyphicons: true
 
   # Core CSS
   scaffolding: true
@@ -71,49 +71,37 @@ styles:
   buttons: true
 
   # Components
-  component-animations: false
-  dropdowns: false
-  button-groups: false
-  input-groups: false
+  component-animations: true
+  dropdowns: true
+  button-groups: true
+  input-groups: true
   navs: true
   navbar: true
-  breadcrumbs: false
-  pagination: false
-  pager: false
-  labels: false
-  badges: false
-  jumbotron: false
-  thumbnails: false
-  alerts: false
-  progress-bars: false
-  media: false
-  list-group: false
-  panels: false
-  wells: false
-  responsive-embed: false
-  close: false
+  breadcrumbs: true
+  pagination: true
+  pager: true
+  labels: true
+  badges: true
+  jumbotron: true
+  thumbnails: true
+  alerts: true
+  progress-bars: true
+  media: true
+  list-group: true
+  panels: true
+  wells: true
+  responsive-embed: true
+  close: true
 
   # Components w/ JavaScript
-  modals: false
-  tooltip: false
-  popovers: false
-  carousel: false
+  modals: true
+  tooltip: true
+  popovers: true
+  carousel: true
 
   # Utility classes
   utilities: true
   responsive-utilities: true
 
 ### Bootstrap scripts
-scripts:
-  # transition: false
-  # alert: false
-  # button: false
-  # carousel: false
-  collapse: false
-  # dropdown: false
-  # modal: false
-  # tooltip: false
-  # popover: false
-  # scrollspy: false
-  # tab: false
-  # affix: false
+scripts: false

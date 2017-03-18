@@ -5,7 +5,7 @@ module.exports = {
 /** @ngInject */
 function pageQuery($stateParams, $log, $rootScope, WPAPI) {
   var wp = new WPAPI({
-    endpoint: 'http://topheavypilesofbooks.com/topheavy/wp-json'
+    endpoint: 'https://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
   var fail = function (error) {
