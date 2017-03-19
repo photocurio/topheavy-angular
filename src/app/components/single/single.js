@@ -7,11 +7,12 @@ module.exports = {
 };
 
 /** @ngInject */
-function singleController($element, $timeout, $log, Prism) {
+function singleController($element, $timeout, $log, $state, Prism) {
   var SELF = this;
 
   SELF.$onInit = function(){
     $element.addClass('single-post');
+    SELF.stateName = $state.current.name;
   };
 
   SELF.$postLink = function() {

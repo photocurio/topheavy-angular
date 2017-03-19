@@ -2,7 +2,4 @@
   <h1 ng-bind-html="$ctrl.page.title.rendered" class="post-single-title"></h1>
   <div ng-bind-html="$ctrl.page.content.rendered" class="post-single-content clearfix">
 </div>
-<div class="meta ng-cloak">
-  <p>Posted: <span>{{$ctrl.page.date | date: 'MMM d, yyyy'}}</span></p>
-  <p>Updated: <span>{{$ctrl.page.modified | date: 'MMM d, yyyy'}}</span></p>
-</div>
+<post-meta modified="$ctrl.page.modified"></post-meta>

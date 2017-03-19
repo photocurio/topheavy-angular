@@ -1,6 +1,6 @@
 <div class="container" ng-class="$ctrl.stateName">
   <div class="posts ng-cloak">
-    <md-content ng-repeat="post in $ctrl.collection"
+    <div ng-repeat="post in $ctrl.collection"
       class="posts-callout" ng-class="{sticky: post.sticky}">
       <a ng-if="post.featuredimage"
         ui-sref="single({year: post.year, month: post.month, slug: post.slug})">
@@ -32,25 +32,16 @@
           ng-bind-html="post.content.rendered"
           class="post-callout-excerpt"></div>
       </div>
-      <div class="meta ng-cloak">
-        <p ng-if="post.categories[0].slug !== 'uncategorized'">Categorized:
-          <span ng-repeat="cat in post.categories"><a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
-        </p>
-        <p ng-if="post.tags[0].slug">Tagged:
-          <span ng-repeat="tag in post.tags"><a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
-        </p>
-      </div>
-    </md-content>
+      <post-meta
+        state="$ctrl.stateName"
+        date="post.date"
+        categories="post.categories"
+        tags="post.tags">
+      </post-meta>
+    </div>
   </div>
 </div>
 <div class="container ng-cloak">
-  <div class="pagination-links">
-    <span>
-      <a ng-if="$ctrl.page < $ctrl.collection._paging.totalPages" ng-click="$ctrl.nextPage()" href>older posts</a>
-    </span>
-    <span>
-      <a ng-if="$ctrl.page > 1" ng-click="$ctrl.previousPage()" href>newer posts</a>
-    </span>
-  </div>
+  <pagination-links paging="$ctrl.collection._paging"></pagination-links>
   <hr>
 </div>

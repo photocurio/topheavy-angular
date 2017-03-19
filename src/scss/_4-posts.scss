@@ -10,6 +10,9 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    .more-link {
+      display: none;
+    }
     &-content {
       flex: 1 1 auto;
     }

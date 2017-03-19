@@ -7,9 +7,10 @@ module.exports = {
 };
 
 /** @ngInject */
-function pageController($element) {
+function pageController($element, $state) {
   var SELF = this;
   SELF.$onInit = function(){
     $element.addClass('page');
+    SELF.stateName = $state.current.name;
   };
 }

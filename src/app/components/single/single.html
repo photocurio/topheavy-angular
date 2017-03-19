@@ -1,47 +1,19 @@
-<div class="single-post container ng-cloak">
+<div class="single-post container single-post-container ng-cloak">
   <h1 ng-bind-html="$ctrl.single.title.rendered" class="single-post-title"></h1>
-  <div ng-bind-html="$ctrl.single.content.rendered" class="single-post-content clearfix">
-</div>
-<div class="meta ng-cloak">
-  <p>Posted: <span>{{$ctrl.single.date | date: 'MMM d, yyyy'}}</span></p>
-  <p>Updated: <span>{{$ctrl.single.modified | date: 'MMM d, yyyy'}}</span></p>
-  <p ng-if="$ctrl.single.categories[0].slug !== 'uncategorized'">Categorized:
-    <span ng-repeat="cat in $ctrl.single.categories">
-    <a ui-sref="collection({taxonomy:'category', slug:cat.slug})" href>{{cat.name}}</a></span>
-  </p>
-  <p ng-if="$ctrl.single.tags[0].slug">Tagged:
-    <span ng-repeat="tag in $ctrl.single.tags">
-    <a ui-sref="collection({taxonomy:'tag', slug:tag.slug})" href>{{tag.name}}</a></span>
-  </p>
+  <div ng-bind-html="$ctrl.single.content.rendered" class="single-post-content clearfix"></div>
+  <post-meta
+    state="$ctrl.stateName"
+    date="$ctrl.single.date"
+    modified="$ctrl.single.modified"
+    categories="$ctrl.single.categories"
+    tags="$ctrl.single.tags">
+  </post-meta>
 </div>
 
-<div ng-if="false">
-  <h4>Leave a Reply</h4>
-  <form action="" method="post" id="commentform">
-  	<p>Logged in as Peter. Log out?</p>
-    <p>
-      <label for="comment">Comment: </label><br>
-      <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
-    </p>
-    <p class="form-submit">
-      <input name="submit" type="submit" id="submit" class="submit" value="Post Comment">
-      <input type="hidden" name="comment_post_ID" value="1222" id="comment_post_ID">
-      <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-    </p>
-    <input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment" value="fa8934f1f0">
-    <script>
-      (function() {
-        if (window === window.parent) {
-          document.getElementById('_wp_unfiltered_html_comment_disabled').name = '_wp_unfiltered_html_comment';
-        }
-      })();
-    </script>
-  </form>
+<div class="container comments-container" ng-if="false">
+  <commentform></commentform>
 </div>
 
-  <ul ng-if="$ctrl.single._embedded.replies">
-    <h4>Replies</h4>
-    <li ng-repeat="reply in $ctrl.single._embedded.replies[0]">{{reply.author_name}} commented:<br>
-    <p ng-bind-html="reply.content.rendered"></p>
-  </li>
-  </ul>
+<div class="container replies-container" ng-if="$ctrl.single._embedded.replies">
+  <replies replies="$ctrl.single._embedded.replies"></replies>
+</div>

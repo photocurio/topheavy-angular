@@ -13,6 +13,10 @@ var navbar = require('./app/components/navbar/navbar');
 var siteFooter = require('./app/components/footer/footer');
 var collectionPosts = require('./app/components/collection/collection');
 var singlePost = require('./app/components/single/single');
+var paginationLinks = require('./app/components/pagination/pagination');
+var commentform = require('./app/components/commentform/commentform');
+var replies = require('./app/components/replies/replies');
+var postMeta = require('./app/components/meta/meta');
 var pageComponent = require('./app/components/page/page');
 
 angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
@@ -23,6 +27,10 @@ angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
   .component('navbar', navbar)
   .component('siteFooter', siteFooter)
   .component('home', collectionPosts)
+  .component('paginationLinks', paginationLinks)
+  .component('commentform', commentform)
   .component('collectionPosts', collectionPosts)
+  .component('postMeta', postMeta)
   .component('page', pageComponent)
-  .component('singlePost', singlePost);
+  .component('singlePost', singlePost)
+  .component('replies', replies);
