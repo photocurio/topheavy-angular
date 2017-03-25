@@ -1,6 +1,6 @@
 <ul class="replies-list">
   <h4>Replies</h4>
-  <li ng-repeat="reply in $ctrl.single._embedded.replies[0]">
+  <li ng-repeat="reply in $ctrl.post.single._embedded.replies[0]">
     <p>{{reply.author_name}} commented:</p>
     <p ng-bind-html="reply.content.rendered"></p>
   </li>

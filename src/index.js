@@ -5,19 +5,19 @@ require('bootstrap-loader');
 require('angular-animate');
 require('angular-ui-bootstrap');
 
-var routesConfig = require('./routes.config');
-var WPAPI = require('./services/wpapi.factory');
-var Prism = require('./services/highlight.service');
-var siteHeader = require('./app/components/header/header');
-var navbar = require('./app/components/navbar/navbar');
-var siteFooter = require('./app/components/footer/footer');
-var collectionPosts = require('./app/components/collection/collection');
-var singlePost = require('./app/components/single/single');
-var paginationLinks = require('./app/components/pagination/pagination');
-var commentform = require('./app/components/commentform/commentform');
-var replies = require('./app/components/replies/replies');
-var postMeta = require('./app/components/meta/meta');
-var pageComponent = require('./app/components/page/page');
+var routesConfig = require(     './routes.config');
+var WPAPI = require(            './services/wpapi.factory');
+var Prism = require(            './services/highlight.factory');
+var siteHeader = require(       './app/components/header/header');
+var navbar = require(           './app/components/navbar/navbar');
+var siteFooter = require(       './app/components/footer/footer');
+var collectionPosts = require(  './app/components/collection/collection');
+var singlePost = require(       './app/components/single/single');
+var paginationLinks = require(  './app/components/pagination/pagination');
+var commentform = require(      './app/components/commentform/commentform');
+var replies = require(          './app/components/replies/replies');
+var postMeta = require(         './app/components/meta/meta');
+var pageComponent = require(    './app/components/page/page');
 
 angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
   .config(routesConfig)
