@@ -1,0 +1,56 @@
+<div class="commentform-container">
+  <form class="comment-form" novalidate ng-submit="$ctrl.createComment()" name="$ctrl.commentform">
+    <h4>Leave a Reply</h4>
+    <div class="comment-form-comment form-group"
+      ng-class="{'has-error' : content.$invalid && $ctrl.commentform.$submitted}">
+      <label for="content">Comment</label><br>
+      <textarea  class="form-control"
+        cols="45"
+        rows="8"
+        name="content"
+        ng-minlength="10"
+        ng-maxlength="700"
+        ng-required="true"
+        ng-model="$ctrl.comment.content"></textarea>
+      <p class="help-block"
+        ng-show="($ctrl.commentform.content.$invalid || $ctrl.commentform.content.$pristine) && $ctrl.commentform.$submitted">You need to enter a comment.
+        Minimum length is 10 characters</p>
+    </div>
+    <div class="comment-form-author form-group"
+      ng-class="{'has-error' : author.$invalid && $ctrl.commentform.$submitted}">
+      <label for="author">Author</label><br>
+      <input class="form-control"
+        type="text"
+        aria-required="true"
+        ng-minlength="4"
+        ng-maxlength="20"
+        ng-required="true"
+        name="author"
+        ng-model="$ctrl.comment.author">
+      <p class="help-block"
+        ng-show="($ctrl.commentform.author.$invalid || $ctrl.commentform.author.$pristine) && $ctrl.commentform.$submitted">Author name is required.
+        Minimum length is 4 characters</p>
+    </div>
+    <div class="comment-form-email form-group"
+      ng-class="{'has-error' : email.$invalid && $ctrl.commentform.$submitted}">
+      <label for="email">Email</label><br>
+      <input class="form-control"
+        type="email"
+        ng-required="true"
+        name="email"
+        ng-model="$ctrl.comment.email">
+      <p class="help-block">Your email will not be published</p>
+      <p class="help-block"
+        ng-show="($ctrl.commentform.email.$invalid || $ctrl.commentform.email.$pristine) && $ctrl.commentform.$submitted">A valid email is required</p>
+    </div>
+    <div class="comment-form-submit form-group">
+      <input type="submit"
+        ng-disabled="$ctrl.commentform.$invalid && $ctrl.commentform.$submitted"
+        class="submit btn btn-success" value="Post your comment">
+    </div>
+    <div class="alert" ng-class="'alert-' + $ctrl.notification.type"
+      role="alert" ng-show="$ctrl.notification.show"
+      ng-bind-html="$ctrl.notification.message">
+    </div>
+  </form>
+</div>

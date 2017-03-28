@@ -14,7 +14,7 @@ var siteFooter = require(       './app/components/footer/footer');
 var collectionPosts = require(  './app/components/collection/collection');
 var singlePost = require(       './app/components/single/single');
 var paginationLinks = require(  './app/components/pagination/pagination');
-var commentform = require(      './app/components/commentform/commentform');
+var comments = require(         './app/components/comments/comments');
 var replies = require(          './app/components/replies/replies');
 var postMeta = require(         './app/components/meta/meta');
 var pageComponent = require(    './app/components/page/page');
@@ -28,7 +28,7 @@ angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
   .component('siteFooter', siteFooter)
   .component('home', collectionPosts)
   .component('paginationLinks', paginationLinks)
-  .component('commentform', commentform)
+  .component('comments', comments)
   .component('collectionPosts', collectionPosts)
   .component('postMeta', postMeta)
   .component('page', pageComponent)

@@ -1,6 +1,27 @@
+.commentform-container {
+  border-bottom: 3px double #bbb;
+}
 .comment-form {
   max-width: 500px;
 }
 .required {
   color: #22B24C;
+}
+
+.replies-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .avatar {
+      margin: .25em .75em 0 0;
+    }
+  }
+}
+.replies-wrapper {
+  border-bottom: 3px double #bbb;
 }

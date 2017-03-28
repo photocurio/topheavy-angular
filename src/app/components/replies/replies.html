@@ -1,7 +1,10 @@
-<ul class="replies-list">
-  <h4>Replies</h4>
-  <li ng-repeat="reply in $ctrl.post.single._embedded.replies[0]">
-    <p>{{reply.author_name}} commented:</p>
-    <p ng-bind-html="reply.content.rendered"></p>
-  </li>
-</ul>
+<div class="replies-wrapper">
+  <ul class="replies-list">
+    <h4>Replies</h4>
+    <li ng-repeat="reply in $ctrl.replies" class="replies-list">
+      <img ng-src="{{reply.author_avatar_urls['48']}}" height="48" width="48" alt="avatar" class="avatar"/>
+      <p><strong>{{reply.author_name}}</strong> commented:<br>
+      <span ng-bind-html="reply.content.rendered"></span></p>
+    </li>
+  </ul>
+</div>
