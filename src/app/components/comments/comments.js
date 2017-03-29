@@ -20,7 +20,9 @@ function commentformController($log, $timeout, WPAPI) {
         SELF.notification = {
           show: true,
           type: 'success',
-          message: 'Your comment on the post <em>' + SELF.post.single.title.rendered + '</em> is now in the moderation queue.'
+          message: 'Your comment on the post <em>' +
+            SELF.post.single.title.rendered +
+            '</em> is now in the moderation queue.'
         };
         SELF.commentform.$setPristine();
         SELF.comment = null;
@@ -34,7 +36,9 @@ function commentformController($log, $timeout, WPAPI) {
 
   SELF.$onInit = function() {
     SELF.notification = {
-      show: false
+      show: false,
+      type: '',
+      message: ''
     };
   };
 

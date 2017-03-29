@@ -4,8 +4,11 @@ require('angular-sanitize');
 require('bootstrap-loader');
 require('angular-animate');
 require('angular-ui-bootstrap');
+require('angular-google-analytics');
 
-var routesConfig = require(     './routes.config');
+var routesConfig = require(     './config/routes.config');
+var gaConfig = require(         './config/ga.config');
+var gaRun = require(            './config/ga.run');
 var WPAPI = require(            './services/wpapi.factory');
 var Prism = require(            './services/highlight.factory');
 var siteHeader = require(       './app/components/header/header');
@@ -19,8 +22,10 @@ var replies = require(          './app/components/replies/replies');
 var postMeta = require(         './app/components/meta/meta');
 var pageComponent = require(    './app/components/page/page');
 
-angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap'])
+angular.module('app', ['ui.router', 'ngSanitize', 'ngAnimate', 'ui.bootstrap', 'angular-google-analytics'])
   .config(routesConfig)
+  .config(gaConfig)
+  .run(gaRun)
   .factory('Prism', Prism)
   .factory('WPAPI', WPAPI)
   .component('siteHeader', siteHeader)
