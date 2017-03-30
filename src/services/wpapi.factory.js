@@ -1,7 +1,5 @@
-module.exports = WPAPI;
+export default WPAPI;
 
-var wpapi = require('wpapi');
-
-function WPAPI(){
-  return wpapi;
+function WPAPI() {
+  return require('wpapi');
 }

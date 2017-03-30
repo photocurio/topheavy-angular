@@ -1,19 +1,16 @@
-module.exports = {
+class collectionController {
+  /** @ngInject */
+  constructor($state) {
+    this.$onInit = () => {
+      this.stateName = $state.current.name;
+    };
+  }
+}
+
+export const collectionPosts = {
   controller: collectionController,
   template: require('./collection.html'),
   bindings: {
     collection: '<'
   }
 };
-
-/** @ngInject */
-function collectionController($state, $log) {
-
-
-  var SELF = this;
-
-  SELF.$onInit = function(){
-    SELF.stateName = $state.current.name;
-  };
-
-}

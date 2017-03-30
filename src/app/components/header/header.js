@@ -1,3 +1,3 @@
-module.exports = {
-  template: require('./header.html'),
+export const siteHeader = {
+  template: require('./header.html')
 };

@@ -1,13 +1,13 @@
-module.exports = {
+class navController {
+  constructor() {
+    this.$onInit = () => {
+      this.isNavCollapsed = true;
+      this.isCollapsed = false;
+    };
+  }
+}
+
+export const navbar = {
   template: require('./navbar.html'),
   controller: navController
 };
-
-/** @ngInject */
-function navController() {
-  var SELF = this;
-  SELF.$onInit = function(){
-    SELF.isNavCollapsed = true;
-    SELF.isCollapsed = false;
-  };
-}

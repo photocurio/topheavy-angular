@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const conf = require('./gulp.conf');
 const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FailPlugin = require('webpack-fail-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -19,8 +18,10 @@ module.exports = {
       {
         test: /.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
-        enforce: 'pre'
+        loader: 'babel-loader',
+        options: {
+          presets: ['env']
+        }
       },
       {
         test: /\.(css|scss)$/,
@@ -56,11 +57,11 @@ module.exports = {
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?limit=100000&mimetype=application/font-woff&name=./assets/[hash].[ext]'
       },
       {
         test: /\.(ttf|otf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?|(jpg|gif)$/,
-        loader: 'file-loader'
+        loader: 'file-loader?limit=10000&name=./assets/[hash].[ext]'
       }
     ]
   },

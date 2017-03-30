@@ -1,21 +1,22 @@
-module.exports = {
+class singleController {
+  /** @ngInject */
+  constructor ($element, $timeout, $log, $state) {
+
+    this.$onInit = () => {
+      $element.addClass('single-post');
+      this.stateName = $state.current.name;
+    };
+
+    this.$postLink = () => {
+      $timeout(Prism.highlightAll, 0);
+    };
+  }
+}
+
+export const singlePost = {
   controller: singleController,
   template: require('./single.html'),
   bindings: {
     single: '<'
   }
 };
-
-/** @ngInject */
-function singleController($element, $timeout, $log, $state, Prism) {
-  var SELF = this;
-
-  SELF.$onInit = function(){
-    $element.addClass('single-post');
-    SELF.stateName = $state.current.name;
-  };
-
-  SELF.$postLink = function() {
-    $timeout(Prism.highlightAll, 0);
-  };
-}
