@@ -1,4 +1,4 @@
-export const postMeta = {
+export default {
   template: require('./meta.html'),
   bindings: {
     state: '<',

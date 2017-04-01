@@ -1,35 +1,28 @@
-module.exports = {
-  collection: collectionPosts
-};
-
-/** @ngInject */
-function collectionPosts($stateParams, $state, $log, $filter, $rootScope, WPAPI) {
-  var page = parseInt($stateParams.page, 10) || 1;
-  var slug = $stateParams.slug;
-  var taxonomy = $stateParams.taxonomy;
-
-  var wp = new WPAPI({
+export default ($stateParams, $log, $filter, $rootScope, WPAPI) => {
+  'ngInject';
+  const page = parseInt($stateParams.page, 10) || 1;
+  const slug = $stateParams.slug;
+  const taxonomy = $stateParams.taxonomy;
+  const wp = new WPAPI({
     endpoint: 'https://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
   // error handler
-  var fail = function (error) {
-    $log.error(error);
-  };
+  const fail = error => $log.error(error);
 
   // success handler
-  var success = function (response) {
+  const success = response => {
     // for re-sequencing posts
-    function arrayMove(arr, fromIndex, toIndex) {
-      var element = arr[fromIndex];
+    const arrayMove = (arr, fromIndex, toIndex) => {
+      const element = arr[fromIndex];
       arr.splice(fromIndex, 1);
       arr.splice(toIndex, 0, element);
-    }
+    };
 
-    var posts = response;
-    for (var i = 0; i < posts.length; i++) {
-      // filter the date so it can be used by the router
-      var postDate = posts[i].date;
+    const posts = response;
+    // filter the date so it can be used by the router
+    for (let i = 0; i < posts.length; i++) {
+      const postDate = posts[i].date;
       posts[i].year = $filter('date')(postDate, 'yyyy');
       posts[i].month = $filter('date')(postDate, 'MM');
       posts[i].categories = posts[i]._embedded['wp:term'][0];
@@ -40,7 +33,7 @@ function collectionPosts($stateParams, $state, $log, $filter, $rootScope, WPAPI)
     }
 
     // special handling for post.id 1222
-    for (var i = 0; i < posts.length; i++) {
+    for (let i = 0; i < posts.length; i++) {
       if (posts[i].id === 1222) {
         posts[i].sticky = false;
         arrayMove(posts, i, 3);
@@ -53,33 +46,33 @@ function collectionPosts($stateParams, $state, $log, $filter, $rootScope, WPAPI)
   // setup the query if the taxonomy slug is in the URL
   if (taxonomy === 'category') {
     // first use the slug to lookup the category ID
-    return wp.categories().slug(slug).then(function(cats) {
+    return wp.categories().slug(slug).then(cats => {
       // set document title on rootscope
       $rootScope.title = cats[0].name;
 
       if (cats[0].slug === 'books') {
         $rootScope.totem = 'umbrella';
       }
-      if (cats[0].slug === 'web-development'){
+      if (cats[0].slug === 'web-development') {
         $rootScope.totem = 'balloon';
       }
       return wp.posts().categories(cats[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
 
   } else if (taxonomy === 'tag') {
-    return wp.tags().slug(slug).then(function(tags) {
+    return wp.tags().slug(slug).then(tags => {
       $rootScope.title = tags[0].name;
       return wp.posts().tags(tags[0].id).perPage(9).param('page', page).embed();
     }).then(success, fail);
 
-  } else if (!taxonomy && !slug && page === 1){
+  } else if (!taxonomy && !slug && page === 1) {
     $rootScope.title = 'topheavypilesofbooks';
     $rootScope.totem = 'vw-bug';
     return wp.posts().perPage(10).embed().then(success, fail);
 
-  } else {
-    $rootScope.title = 'topheavypilesofbooks';
-    $rootScope.totem = 'vw-bug';
-    return wp.posts().param('page', page).perPage(9).embed().then(success, fail);
   }
+  // Default posts
+  $rootScope.title = 'topheavypilesofbooks';
+  $rootScope.totem = 'vw-bug';
+  return wp.posts().param('page', page).perPage(9).embed().then(success, fail);
 };

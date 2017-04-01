@@ -1,14 +1,14 @@
-class collectionController {
-  /** @ngInject */
+class collectionsController {
   constructor($state) {
+    'ngInject';
     this.$onInit = () => {
       this.stateName = $state.current.name;
     };
   }
 }
 
-export const collectionPosts = {
-  controller: collectionController,
+export default {
+  controller: collectionsController,
   template: require('./collection.html'),
   bindings: {
     collection: '<'

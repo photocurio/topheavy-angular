@@ -1,7 +1,7 @@
 
 class pageController {
-  /** @ngInject */
   constructor($element, $state) {
+    'ngInject';
     this.$onInit = () => {
       $element.addClass('page');
       this.stateName = $state.current.name;
@@ -9,7 +9,7 @@ class pageController {
   }
 }
 
-export const pageComponent = {
+export default {
   controller: pageController,
   template: require('./page.html'),
   bindings: {

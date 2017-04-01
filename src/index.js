@@ -5,9 +5,6 @@ import 'bootstrap-loader';
 import 'angular-animate';
 import 'angular-ui-bootstrap';
 import 'angular-google-analytics';
-import Prism from 'prismjs';
-import 'prismjs/components/prism-php';
-import 'prismjs/components/prism-yaml';
 
 // CONFIG
 import routesConfig from './config/routes.config';
@@ -17,16 +14,16 @@ import {gaConfig, gaRun} from './config/ga.config';
 import WPAPI from './services/wpapi.factory';
 
 // COMPONENTS
-import {siteHeader}       from './app/components/header/header';
-import {navbar}           from './app/components/navbar/navbar';
-import {siteFooter}       from './app/components/footer/footer';
-import {comments}         from './app/components/comments/comments';
-import {collectionPosts}  from './app/components/collection/collection';
-import {paginationLinks}  from './app/components/pagination/pagination';
-import {postMeta}         from './app/components/meta/meta';
-import {pageComponent}    from './app/components/page/page';
-import {singlePost}       from './app/components/single/single';
-import {replies}          from './app/components/replies/replies';
+import siteHeader       from './app/components/header/header';
+import navbar           from './app/components/navbar/navbar';
+import siteFooter       from './app/components/footer/footer';
+import comments         from './app/components/comments/comments';
+import collectionPosts  from './app/components/collection/collection';
+import paginationLinks  from './app/components/pagination/pagination';
+import postMeta         from './app/components/meta/meta';
+import pageComponent    from './app/components/page/page';
+import singlePost       from './app/components/single/single';
+import replies          from './app/components/replies/replies';
 
 angular.module('app', [
   'ui.router',
@@ -39,14 +36,13 @@ angular.module('app', [
 .config(gaConfig)
 .run(gaRun)
 .factory('WPAPI', WPAPI)
-
 .component('siteHeader', siteHeader)
 .component('navbar', navbar)
 .component('siteFooter', siteFooter)
 .component('home', collectionPosts)
 .component('paginationLinks', paginationLinks)
 .component('comments', comments)
-.component('collectionPosts', collectionPosts)
+.component('posts', collectionPosts)
 .component('postMeta', postMeta)
 .component('page', pageComponent)
 .component('singlePost', singlePost)

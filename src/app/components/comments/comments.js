@@ -1,11 +1,11 @@
 class commentformController {
-  /** @ngInject */
   constructor($log, $timeout, WPAPI) {
+    'ngInject';
     const wp = new WPAPI({
       endpoint: 'https://topheavypilesofbooks.com/topheavy/wp-json'
     });
 
-    const commentSuccess = (result) => {
+    const commentSuccess = result => {
       if (result) {
         $timeout(() => {
           this.notification = {
@@ -21,8 +21,8 @@ class commentformController {
       }
     };
 
-    const commentFail = (error) => {
-      let errorString = angular.toJson(error);
+    const commentFail = error => {
+      const errorString = angular.toJson(error);
       $log.error(`Failed to create comment: ${errorString}`);
     };
 
@@ -40,20 +40,20 @@ class commentformController {
           post: this.post.single.id,
           author_email: this.commentform.email.$modelValue,
           author_name: this.commentform.author.$modelValue,
-          content: this.commentform.content.$modelValue,
+          content: this.commentform.content.$modelValue
         }).then(commentSuccess, commentFail);
       } else {
         this.notification = {
           show: true,
           type: 'warning',
-          message: `The comment form didn\'t pass validation. Please try again.`
+          message: `The comment form didn't pass validation. Please try again.`
         };
       }
     };
   }
 }
 
-export const comments = {
+export default {
   controller: commentformController,
   template: require('./comments.html'),
   require: {

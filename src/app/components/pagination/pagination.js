@@ -1,7 +1,7 @@
 class paginationController {
-  /** @ngInject */
-  constructor($stateParams, $state, $log) {
-    let pageNum = parseInt($stateParams.page, 10) || 10;
+  constructor($stateParams, $state) {
+    'ngInject';
+    const pageNum = parseInt($stateParams.page, 10) || 10;
 
     this.$onInit = () => {
       this.pageNum = pageNum;
@@ -26,7 +26,7 @@ class paginationController {
   }
 }
 
-export const paginationLinks = {
+export default {
   controller: paginationController,
   template: require('./pagination.html'),
   bindings: {

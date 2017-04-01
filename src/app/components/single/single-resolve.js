@@ -1,20 +1,14 @@
-module.exports = {
-  single: singlePost
-};
-
-/** @ngInject */
-function singlePost($stateParams, $log, $rootScope, WPAPI) {
-  var wp = new WPAPI({
+export default ($stateParams, $log, $rootScope, WPAPI) => {
+  'ngInject';
+  const wp = new WPAPI({
     endpoint: 'https://topheavypilesofbooks.com/topheavy/wp-json'
   });
 
-  var fail = function (error) {
-    $log.error(error);
-  };
+  const fail = error => $log.error(error);
 
-  var success = function (response) {
+  const success = response => {
     // the response will be an array with one post object
-    var post = response[0];
+    const post = response[0];
     // set document title
     $rootScope.title = post.title.rendered;
     // make Categories and Tags simpler
@@ -24,4 +18,4 @@ function singlePost($stateParams, $log, $rootScope, WPAPI) {
   };
   $rootScope.totem = 'bicycle';
   return wp.posts().param('slug', $stateParams.slug).embed().then(success, fail);
-}
+};

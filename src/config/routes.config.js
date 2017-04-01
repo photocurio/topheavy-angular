@@ -1,12 +1,10 @@
-export default routesConfig;
+// each state has a Resolve Object that fetches data
+import collectionResolve  from '../app/components/collection/collection-resolve';
+import pageResolve        from '../app/components/page/page-resolve';
+import singleResolve      from '../app/components/single/single-resolve';
 
-// each state has a Resolve Object that fetches the data
-const collectionResolve = require('../app/components/collection/collection-resolve');
-const pageResolve       = require('../app/components/page/page-resolve');
-const singleResolve     = require('../app/components/single/single-resolve');
-
-/** @ngInject */
-function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
+export default ($locationProvider, $urlRouterProvider, $stateProvider) => {
+  'ngInject';
   $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/');
   $stateProvider.state('home', {
@@ -17,8 +15,10 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
         squash: true
       }
     },
-    component: 'collectionPosts',
-    resolve: collectionResolve
+    component: 'posts',
+    resolve: {
+      collection: collectionResolve
+    }
   })
   .state('collection', {
     url: '/:taxonomy/:slug/?page',
@@ -28,17 +28,23 @@ function routesConfig($locationProvider, $urlRouterProvider, $stateProvider) {
         squash: true
       }
     },
-    component: 'collectionPosts',
-    resolve: collectionResolve
+    component: 'posts',
+    resolve: {
+      collection: collectionResolve
+    }
   })
   .state('page', {
     url: '/:slug/',
     component: 'page',
-    resolve: pageResolve
+    resolve: {
+      page: pageResolve
+    }
   })
   .state('single', {
     url: '/:year/:month/:slug/',
     component: 'singlePost',
-    resolve: singleResolve
+    resolve: {
+      single: singleResolve
+    }
   });
-}
+};

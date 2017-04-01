@@ -7,7 +7,7 @@ class navController {
   }
 }
 
-export const navbar = {
+export default {
   template: require('./navbar.html'),
   controller: navController
 };

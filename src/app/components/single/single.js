@@ -1,7 +1,10 @@
-class singleController {
-  /** @ngInject */
-  constructor ($element, $timeout, $log, $state) {
+import Prism from 'prismjs';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-yaml';
 
+class singleController {
+  constructor ($element, $timeout, $log, $state) {
+    'ngInject';
     this.$onInit = () => {
       $element.addClass('single-post');
       this.stateName = $state.current.name;
@@ -13,7 +16,7 @@ class singleController {
   }
 }
 
-export const singlePost = {
+export default {
   controller: singleController,
   template: require('./single.html'),
   bindings: {

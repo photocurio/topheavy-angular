@@ -1,5 +1,1 @@
-export default WPAPI;
-
-function WPAPI() {
-  return require('wpapi');
-}
+export default () => require('wpapi');

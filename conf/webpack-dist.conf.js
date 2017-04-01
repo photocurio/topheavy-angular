@@ -9,7 +9,8 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   module: {
-    loaders: [{
+    loaders: [
+      {
         test: /.json$/,
         loaders: [
           'json-loader'
@@ -18,10 +19,8 @@ module.exports = {
       {
         test: /.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['env']
-        }
+        loader: 'eslint-loader',
+        enforce: 'pre'
       },
       {
         test: /\.(css|scss)$/,
@@ -45,9 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: [
-          'ng-annotate-loader'
-        ]
+        loaders: ['ng-annotate-loader', 'babel-loader']
       },
       {
         test: /.html$/,
@@ -73,21 +70,13 @@ module.exports = {
       template: conf.path.src('index.html')
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false
-      }
+      output: {comments: false},
+      compress: {unused: true, dead_code: true, warnings: false}
     }),
     new ExtractTextPlugin('index-[contenthash].css'),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    }),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
-      options: {
-        context: '/',
-        postcss: () => [autoprefixer]
-      }
+      options: { postcss: () => [autoprefixer] }
     })
   ],
   output: {
